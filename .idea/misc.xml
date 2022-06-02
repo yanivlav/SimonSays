@@ -5,7 +5,12 @@
       <map>
         <entry key="..\:/Users/Yaniv/Desktop/Studies/android/Final Project/SimonSays/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/drawable/blue_btn.xml" value="0.111" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/green_ben.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/green_btn.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/red_btn.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/shape_selector.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable/yellow_btn.xml" value="0.1425" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.4826736450195313" />
       </map>
     </option>
   </component>
