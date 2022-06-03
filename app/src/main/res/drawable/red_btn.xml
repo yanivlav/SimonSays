@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item android:state_pressed="false">
-        <shape
-                android:shape="ring"
-                android:thicknessRatio="100"
-                android:useLevel="false">
-
-            <solid
-                    android:color="@color/red">
-            </solid>
-        </shape>
-    </item>
+<selector xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:state_pressed="true">
         <shape
-                android:shape="oval"
+                android:shape="ring"
+                android:thickness="4dp"
+
                 android:useLevel="false">
+
+            <solid
+                    android:color="@color/red">
+            </solid>
+            <gradient
+                android:endColor="@color/white"
+                android:startColor="@color/red"
+                android:angle="360">
+        </gradient>
+        </shape>
+    </item>
+
+    <item>
+        <shape
+                android:shape="ring"
+                android:useLevel="false"
+                android:thickness="3dp">
 
             <solid
                     android:color="@color/red">
@@ -24,5 +33,4 @@
 
         </shape>
     </item>
-
 </selector>
