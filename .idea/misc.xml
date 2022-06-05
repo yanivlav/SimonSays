@@ -13,9 +13,11 @@
         <entry key="app/src/main/res/drawable/shape_selector.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/yellow_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/layout/activity_game.xml" value="0.22313232421874998" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.12263168076337394" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2265625" />
         <entry key="app/src/main/res/menu/preferences.xml" value="0.25962829589843756" />
         <entry key="app/src/main/res/xml/preference.xml" value="0.13677536231884058" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.13677536231884058" />
       </map>
     </option>
   </component>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="Preferce category A">
+
+        <CheckBoxPreference
+                android:title="Prefrece checkbox title"
+                android:summary="Preferce checkbox extra text"
+                android:key="preference_chekcbox"/>
+
+        <ListPreference
+                android:title="List prefrence title"
+                android:summary="List preference extra text"
+                android:key="list_prefrence"
+                android:entryValues="@array/list_values"
+                android:entries="@array/list_entries"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:title="Prefrence category B">
+        <PreferenceScreen
+                android:title="More settings"
+                android:icon="@mipmap/ic_launcher">
+
+            <EditTextPreference
+                    android:title="Edit text prefernce title"
+                    android:summary="edit test prefrence extra text"
+                    android:key="edit_text_prefernce"
+                    android:dialogTitle="Enter free text"
+                    android:dialogMessage="Here you can write whatever you want"/>
+
+            <SwitchPreference
+                    android:title="Switch prefrence title"
+                    android:summary="SwitchPrefrence extra text"
+                    android:key="switch_prefrence"/>
+
+            <MultiSelectListPreference
+                    android:title="Multi select list"
+                    android:summary="Multi select list extra text"
+                    android:key="multi_select_list"
+                    android:entries="@array/list_entries"
+                    android:entryValues="@array/list_values"/>
+        </PreferenceScreen>
+    </PreferenceCategory>
+</PreferenceScreen>

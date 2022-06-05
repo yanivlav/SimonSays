@@ -64,6 +64,7 @@
 
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/blueglowBtn"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_below="@+id/glowButton"
@@ -79,6 +80,53 @@
             app:layout_constraintStart_toStartOf="parent"
             app:pressedGlowSize="30dp"
             app:unpressedGlowSize="10dp" />
+
+
+        <CheckBox
+                android:layout_below="@id/blueglowBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="check box prefrence result"
+                android:textColor="@color/white"
+                android:id="@+id/checkbox_pref_result"/>
+
+        <TextView
+                android:layout_below="@id/checkbox_pref_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_pref_result"
+                android:backgroundTint="@color/white"
+                android:text="textviee"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+        <TextView
+                android:layout_below="@id/list_pref_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/edit_text_pref_result"
+                android:text="textviee"
+                android:textColor="@color/white"
+                android:textSize="20sp"/>
+
+        <Switch
+                android:layout_below="@id/edit_text_pref_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Switch prefs result"
+                android:switchPadding="20sp"
+                android:textColor="@color/white"
+                android:id="@+id/switch_pref_result"/>
+
+        <TextView
+                android:layout_below="@id/switch_pref_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:text="textviee"
+                android:id="@+id/multi_select_pref_result"/>
+
 
 </RelativeLayout>
 
