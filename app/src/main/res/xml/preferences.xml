@@ -4,44 +4,129 @@
     <PreferenceCategory
             android:title="Preferce category A">
 
+        <EditTextPreference
+                android:icon="@drawable/user_name_icon"
+                android:title="Nickname"
+                android:summary="Optional"
+                android:key="nickname_edit_text_prefernce"
+                android:dialogTitle="Enter desired name"
+                android:dialogMessage="Some thing like Barbuu or Joninc or Tdbilbo"/>
+
         <CheckBoxPreference
-                android:title="Prefrece checkbox title"
-                android:summary="Preferce checkbox extra text"
-                android:key="preference_chekcbox"/>
+                android:icon="@drawable/audio_icon"
+                android:title="Sound"
+                android:summary="On / Off"
+                android:key="sound_checkbox"/>
 
         <ListPreference
-                android:title="List prefrence title"
-                android:summary="List preference extra text"
-                android:key="list_prefrence"
+                android:icon="@drawable/difficulty_icon"
+                android:title="Difficulty"
+                android:key="difficulty_listPreference"
                 android:entryValues="@array/list_values"
                 android:entries="@array/list_entries"/>
+
+        <ListPreference
+                android:dialogIcon="@drawable/red_btn"
+                android:title="Red button sound effect"
+                android:key="red_listPreference"
+                android:icon="@drawable/red_btn_icon"
+                android:entryValues="@array/hitech_sound_effects"
+                android:entries="@array/hitech_sound_effects"/>
+        <ListPreference
+                android:dialogIcon="@drawable/blue_btn"
+                android:title="Blue button sound effect"
+                android:key="blue_listPreference"
+                android:icon="@drawable/blue_btn_icon"
+                android:entryValues="@array/hitech_sound_effects"
+                android:entries="@array/hitech_sound_effects"/>
+        <ListPreference
+                android:dialogIcon="@drawable/green_btn"
+                android:title="Green button sound effect"
+                android:key="green_listPreference"
+                android:icon="@drawable/green_btn_icon"
+                android:entryValues="@array/hitech_sound_effects"
+                android:entries="@array/hitech_sound_effects"/>
+        <ListPreference
+                android:dialogIcon="@drawable/yellow_btn"
+                android:title="Yellow button sound effect"
+                android:key="yellow_listPreference"
+                android:icon="@drawable/yellow_btn_icon"
+                android:entryValues="@array/hitech_sound_effects"
+                android:entries="@array/hitech_sound_effects"/>
+
+        <SwitchPreference
+                android:title="Default sound effects"
+                android:key="default_sound_effects_witch_prefrence" />
+
 
     </PreferenceCategory>
 
     <PreferenceCategory
             android:title="Prefrence category B">
         <PreferenceScreen
-                android:title="More settings"
+                android:title="Choose your sound"
                 android:icon="@mipmap/ic_launcher">
 
-            <EditTextPreference
-                    android:title="Edit text prefernce title"
-                    android:summary="edit test prefrence extra text"
-                    android:key="edit_text_prefernce"
-                    android:dialogTitle="Enter free text"
-                    android:dialogMessage="Here you can write whatever you want"/>
+
 
             <SwitchPreference
                     android:title="Switch prefrence title"
                     android:summary="SwitchPrefrence extra text"
-                    android:key="switch_prefrence"/>
+                    android:key="switch_prefrence" />
 
             <MultiSelectListPreference
-                    android:title="Multi select list"
-                    android:summary="Multi select list extra text"
-                    android:key="multi_select_list"
+                    android:title="something"
+                    android:key="instrumental"
                     android:entries="@array/list_entries"
                     android:entryValues="@array/list_values"/>
+
+            <MultiSelectListPreference
+                    android:title="Robot"
+                    android:key="multi_select_list"
+                    android:entries="@array/robot_sound_effects"
+                    android:entryValues="@array/robot_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Instrumental"
+                    android:key="instrumental"
+                    android:entries="@array/instrumental_sound_effects"
+                    android:entryValues="@array/instrumental_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Hi_Tech"
+                    android:key="hitech"
+                    android:entries="@array/hitech_sound_effects"
+                    android:entryValues="@array/hitech_sound_effects"/>
+            <MultiSelectListPreference
+                    android:title="Hit"
+                    android:key="hit"
+                    android:entries="@array/hit_sound_effects"
+                    android:entryValues="@array/hit_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Arcade"
+                    android:key="arcade"
+                    android:entries="@array/arcade_sound_effects"
+                    android:entryValues="@array/arcade_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Animels"
+                    android:key="animels"
+                    android:entries="@array/animels_sound_effects"
+                    android:entryValues="@array/animels_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Ailians"
+                    android:key="ailians"
+                    android:entries="@array/alian_sound_effects"
+                    android:entryValues="@array/alian_sound_effects"/>
+
+            <MultiSelectListPreference
+                    android:title="Alarms and buzzers"
+                    android:key="alarms_buzzers"
+                    android:entries="@array/alarm_sound_effects"
+                    android:entryValues="@array/alarm_sound_effects"/>
+
         </PreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>

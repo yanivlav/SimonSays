@@ -5,127 +5,109 @@
         android:background="@color/black"
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Button
-            android:id="@+id/play_btn"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="90dp"
-            android:text="Play"
-            android:textStyle="bold"
-            android:textColor="@android:color/background_dark"
-            android:textSize="15sp" />
-
-    <Button
-            android:id="@+id/first_activity_button"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:text="Next!!!!!!!!!!!!!!!!!!!!!!!!"
-            android:textStyle="bold"
-            android:textColor="@android:color/background_dark"
-            android:textSize="15sp" />
-
-
-
-    <Button
-            android:id="@+id/Settings"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="90dp"
-            android:text="Play"
-            android:textStyle="bold"
-            android:textColor="@android:color/background_dark"
-            android:textSize="15sp" />
-
-    <Button
-            android:id="@+id/Collection"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginLeft="90dp"
-            android:text="Play"
-            android:textStyle="bold"
-            android:textColor="@android:color/background_dark"
-            android:textSize="15sp" />
-
-
-
-    <com.sanojpunchihewa.glowbutton.GlowButton
-            android:id="@+id/glowButton"
-            android:layout_width="wrap_content"
+    <TextView
+            android:text="₱₴Ɏ₵ⱧØ ₴ł₥Ø₦"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="124dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/yellow"
-            android:padding="20dp"
-            app:unpressedGlowSize="10dp" />
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:id="@+id/simon_title"
+            android:layout_marginTop="20dp"
+            android:textSize="50dp"
+            />
 
+    <TextView
+            android:text="TᖇY TO ᗰᗩIᑎTᗩIᑎ ᔕᗩᑎIT"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_below="@id/simon_title"
+            android:id="@+id/simon_title_mini"
+            android:layout_margin="10dp"
+            android:textSize="10dp"
+            />
+
+
+    <ImageView
+            android:id="@+id/home_page"
+            android:layout_width="268dp"
+            android:layout_height="515dp"
+            android:layout_below="@id/share_button"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/xilubi1" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
-            android:id="@+id/blueglowBtn"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_below="@+id/glowButton"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="64dp"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/blue"
-            android:padding="30dp"
-            app:cornerRadius="100dp"
-            app:glowColor="@color/red"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent"
-            app:pressedGlowSize="30dp"
-            app:unpressedGlowSize="10dp" />
+            android:id="@+id/first_activity_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/simon_title"
+            android:layout_marginTop="65dp"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:text="ⱠɆ₮ ₮ⱧɆ ₲₳₥Ɇ ฿Ɇ₲ł₦"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:pressedGlowSize="20dp" />
+
+    <com.sanojpunchihewa.glowbutton.GlowButton
+            app:pressedGlowSize="20dp"
+            android:id="@+id/collection_activity_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/first_activity_button"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:text="₥Ɏ ₵ØⱠⱠɆ₵₮łØ₦"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_margin="15dp"
+            android:textStyle="bold" />
+
+    <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/conductor_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/collection_activity_button"
+            android:layout_margin="10dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/transparent"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:text="₵Ø₦ĐɄ₵₮ØⱤ Ø₣ ₮ⱧɆ ØⱤ₵ⱧɆ₴₮Ɽ₳"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:pressedGlowSize="20dp" />
+
+    <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/share_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/conductor_button"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/transparent"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="₴Ⱨ₳ⱤɆ ₮ⱧɆ ₥₳Đ₦Ɇ₴₴"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:pressedGlowSize="20dp" />
 
 
-        <CheckBox
-                android:layout_below="@id/blueglowBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="check box prefrence result"
-                android:textColor="@color/white"
-                android:id="@+id/checkbox_pref_result"/>
-
-        <TextView
-                android:layout_below="@id/checkbox_pref_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/list_pref_result"
-                android:backgroundTint="@color/white"
-                android:text="textviee"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
-
-        <TextView
-                android:layout_below="@id/list_pref_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/edit_text_pref_result"
-                android:text="textviee"
-                android:textColor="@color/white"
-                android:textSize="20sp"/>
-
-        <Switch
-                android:layout_below="@id/edit_text_pref_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Switch prefs result"
-                android:switchPadding="20sp"
-                android:textColor="@color/white"
-                android:id="@+id/switch_pref_result"/>
-
-        <TextView
-                android:layout_below="@id/switch_pref_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="@color/white"
-                android:text="textviee"
-                android:id="@+id/multi_select_pref_result"/>
 
 
 </RelativeLayout>
