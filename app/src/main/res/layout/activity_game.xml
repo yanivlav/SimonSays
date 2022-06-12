@@ -14,6 +14,14 @@
             android:layout_height="wrap_content"
             android:text="@string/start"/>
 
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/start_btn"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:id="@+id/coordinate"/>
+
 
     <RelativeLayout
             android:id="@+id/centerBtns"
@@ -51,12 +59,14 @@
             android:layout_marginBottom="180dp"
             android:gravity="center">
 
-        <androidx.appcompat.widget.AppCompatButton
+        <ImageView
                 android:id="@+id/blue_btn"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:background="@drawable/blue_btn"
-                android:gravity="center" />
+                android:src="@drawable/blue_btn_animation"
+                android:gravity="center"
+                android:clickable="true"
+                android:focusable="true"/>
 
         <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/yellow_btn"

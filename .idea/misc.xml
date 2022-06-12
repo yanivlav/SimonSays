@@ -3,12 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Yaniv/Desktop/Studies/android/Final Project/SimonSays/app/src/main/res/drawable/blue_btn.xml" value="0.252" />
-        <entry key="..\:/Users/Yaniv/Desktop/Studies/android/Final Project/SimonSays/app/src/main/res/layout/activity_game.xml" value="0.20364583333333333" />
         <entry key="..\:/Users/Yaniv/Desktop/Studies/android/Final Project/SimonSays/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/red_btn.xml" value="0.1425" />
-        <entry key="app/src/main/res/drawable/blue_btn.xml" value="0.111" />
+        <entry key="app/src/main/res/drawable/audio_icon.xml" value="0.232" />
+        <entry key="app/src/main/res/drawable/blue_btn.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/blue_btn_animation.xml" value="0.1095" />
+        <entry key="app/src/main/res/drawable/blue_btn_icon.xml" value="0.1095" />
         <entry key="app/src/main/res/drawable/btn_bg_selector.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/green_ben.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/green_btn.xml" value="0.1425" />
@@ -18,7 +19,7 @@
         <entry key="app/src/main/res/drawable/shape_selector.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/yellow_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/yellow_btn_icon.xml" value="0.1425" />
-        <entry key="app/src/main/res/layout/activity_game.xml" value="0.22313232421874998" />
+        <entry key="app/src/main/res/layout/activity_game.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.30228881835937504" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.2265625" />
         <entry key="app/src/main/res/menu/preferences.xml" value="0.25962829589843756" />
