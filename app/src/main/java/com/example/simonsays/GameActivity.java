@@ -179,7 +179,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void flashSequence() {
-        List<Integer> playerAnswers = new ArrayList<>();
+        playerAnswers = new ArrayList<>();
         Random rand = new Random();
         sequence.add(rand.nextInt(3));
         for (int i = 0; i < roundNumber; i++) {
@@ -235,17 +235,19 @@ public class GameActivity extends AppCompatActivity {
 
     private void flashGreen(){
         //
+        playerAnswers.add(0);
     }
 
     private void flashRed(){
-
+        playerAnswers.add(1);
     }
 
     private void flashYellow(){
-
+        playerAnswers.add(2);
     }
 
     private void flashBlue(){
+        playerAnswers.add(3);
 
     }
 
