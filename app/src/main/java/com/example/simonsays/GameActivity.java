@@ -22,9 +22,9 @@ public class GameActivity extends AppCompatActivity {
     private int AIe;
     private int highScore;
     private int chain;
-    ArrayList<Integer> AI;
-    ArrayList<Integer> sequence;
-    ArrayList<Integer> playerAnswers;
+    private ArrayList<Integer> AI;
+    private ArrayList<Integer> sequence;
+    private ArrayList<Integer> playerAnswers;
 
 
 
