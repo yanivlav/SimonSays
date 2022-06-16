@@ -1,5 +1,6 @@
 package com.example.simonsays;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -11,19 +12,20 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
     Button blueBtn, yellowBtn, redBtn, greenBtn,startBtn;
-    ImageView blueAnim;
+    ImageView blueBtnIV;
     private int roundNumber;
     private int AIe;
     private int highScore;
     private int chain;
-    private ArrayList<Integer> AI;
-    private ArrayList<Integer> sequence;
-    private ArrayList<Integer> playerAnswers;
-
+    ArrayList<Integer> AI;
+    ArrayList<Integer> sequence;
+    ArrayList<Integer> playerAnswers;
+    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
 
 
     @Override
@@ -31,22 +33,105 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        blueBtnIV = findViewById(R.id.blue_btn);
+        AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
+
 //        blueBtn = (Button) findViewById(R.id.blue_btn);
         yellowBtn = (Button)findViewById(R.id.yellow_btn);
         redBtn = (Button)findViewById(R.id.red_btn);
         greenBtn = (Button)findViewById(R.id.green_btn);
-        startBtn = (Button)findViewById(R.id.start_btn);
-        blueAnim = findViewById(R.id.blue_btn);
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueAnim.getDrawable();
-//        animationDrawable.start();
+//        startBtn = (Button)findViewById(R.id.start_btn);
+
+        final MediaPlayer mpb = MediaPlayer.create(this,R.raw.boy_says_volcano);
+        final MediaPlayer mpr = MediaPlayer.create(this,R.raw.robot_says_yes);
+        final MediaPlayer mpy = MediaPlayer.create(this,R.raw.scifi_artificial_intelligence_speaks);
+        final MediaPlayer mpg = MediaPlayer.create(this,R.raw.scifi_robot_says_no);
+
+        Intent intent = getIntent();
+
+        userRedBtnSE = intent.getStringExtra("RedBtnSE");
+        userBlueBtnSE = intent.getStringExtra("BlueBtnSE");
+        userGreenBtnSE = intent.getStringExtra("GreenBtnSE");
+        userYellowBtnSE = intent.getStringExtra("YellowBtnSE");
+        userNickname = intent.getStringExtra("Nickname");
+        UserSoundchise = intent.getStringExtra("Soundchise");
+        userDiff = intent.getStringExtra("userDiff");
 
 
-        final MediaPlayer mpb = MediaPlayer.create(this,R.raw.alien_blast_in_the_earth);
-        final MediaPlayer mpr = MediaPlayer.create(this,R.raw.cool_guitar_riff);
-        final MediaPlayer mpy = MediaPlayer.create(this,R.raw.electric_fence_buzzing);
-        final MediaPlayer mpg = MediaPlayer.create(this,R.raw.scifi_artificial_intelligence_speaks);
 
 //        Timer timer = new Timer();
+//
+//
+//
+//        int level = 1;//counter for level
+//
+////        Button[] buttons = {blueBtn,yellowBtn,redBtn,greenBtn};
+//
+//        Random rand = new Random();
+////        int randNum = rand.nextInt(3);
+//
+//        ArrayList<String> first = new ArrayList<>();
+
+//        first.add(colors[randNum]);
+
+//        //initialize 100 first colors
+//        for (int i = 0; i < 100 ; i++){
+//            first.add(colors[rand.nextInt(3)]);
+//
+//        }
+//        for (int i = 0 ; i < first.size(); i++){
+//                switch(first.get(i)) {
+//                    case "Blue":
+//                        mpb.start();
+//                        break;
+//                    case "Red":
+//                        mpr.start();
+//                        break;
+//                    case "Green":
+//                        mpg.start();
+//                        break;
+//                    case "Yellow":
+//                        mpy.start();
+//                        break;
+//                    default:
+//                        // code block
+//                }
+//                try {
+//                    Thread.sleep(1000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//        }
+
+//        while (level < 100){
+//            for (int i = 0 ; i < level; i++){
+//                switch(first.get(i)) {
+//                    case "Blue":
+//                        mpb.start();
+//                        break;
+//                    case "Red":
+//                        mpr.start();
+//                        break;
+//                    case "Green":
+//                        mpg.start();
+//                        break;
+//                    case "Yellow":
+//                        mpy.start();
+//                        break;
+//                    default:
+//                        // code block
+//                }
+////        private int checkCurrentSteam(ArrayList<String> first, ArrayList<String> clickStream){
+////            for (int i = 0 ; i < first.toArray().length; i++){
+////                if (first[i] != clickStream[i]){
+////                    return 0;
+////                }
+////                return 1;
+////            }
+//
+//            }//for
+//            level++;
+//        }//while
 
         AIe = 0;
         highScore = 20;
@@ -75,21 +160,22 @@ public class GameActivity extends AppCompatActivity {
 //        });
 
 
-
-        blueAnim.setOnClickListener(new View.OnClickListener() {
+        blueBtnIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mpb.start();
+                AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
                 animationDrawable.start();
+                blueBtnIV.setEnabled(false);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        animationDrawable.stop();
                     }
                 }, 1000);
+                animationDrawable.stop();
+                blueBtnIV.setEnabled(true);
             }
         });
-
 //        blueBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -124,19 +210,17 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void flashSequence() {
-        playerAnswers = new ArrayList<>();
+        List<Integer> playerAnswers = new ArrayList<>();
         Random rand = new Random();
-//        sequence.add(rand.nextInt(3));
-        sequence.add(3);
-        sequence.add(0);
+        sequence.add(rand.nextInt(3));
         for (int i = 0; i < roundNumber; i++) {
             int currentLight = sequence.get(i);
             AI = sequence;
             //should activate a flash for button by numbers finish the functions
-            if(currentLight == 0) flashGreen();
+//            if(currentLight === 0) flashGreen();
 //            if(currentLight === 1) flashRed();
 //            if(currentLight === 2) flashYellow();
-            if(currentLight == 3) flashBlue();
+//            if(currentLight === 3) flashBlue();
 
         }
     }
@@ -182,45 +266,28 @@ public class GameActivity extends AppCompatActivity {
 
     private void flashGreen(){
         //
-        final MediaPlayer mpg = MediaPlayer.create(this,R.raw.alien_blast_in_the_earth);
-        mpg.start();
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueAnim.getDrawable();
-        animationDrawable.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animationDrawable.stop();
-            }
-        }, 1000);
-        playerAnswers.add(0);
     }
 
     private void flashRed(){
-        final MediaPlayer mpr = MediaPlayer.create(this,R.raw.alien_blast_in_the_earth);
-        mpr.start();
-        playerAnswers.add(1);
+
     }
 
     private void flashYellow(){
-        final MediaPlayer mpy = MediaPlayer.create(this,R.raw.alien_blast_in_the_earth);
-        mpy.start();
-        playerAnswers.add(2);
+
     }
 
     private void flashBlue(){
-        final MediaPlayer mpb = MediaPlayer.create(this,R.raw.alien_blast_in_the_earth);
-        mpb.start();
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueAnim.getDrawable();
+//        mpb.start();
+        AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
         animationDrawable.start();
-        blueAnim.setEnabled(false);
+        blueBtnIV.setEnabled(false);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                animationDrawable.stop();
             }
         }, 1000);
-        blueAnim.setEnabled(true);
-        playerAnswers.add(3);
+        animationDrawable.stop();
+        blueBtnIV.setEnabled(true);
     }
 
     private void wait(int ms){
@@ -231,6 +298,10 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    private void playBtnSound(String fileName){
+        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
+        mPlayer.start();
+    }
 
 
 

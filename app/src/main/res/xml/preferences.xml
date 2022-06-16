@@ -30,29 +30,29 @@
                 android:title="Red button sound effect"
                 android:key="red_listPreference"
                 android:icon="@drawable/red_btn_icon"
-                android:entryValues="@array/hitech_sound_effects"
-                android:entries="@array/hitech_sound_effects"/>
+                android:entryValues="@array/robot_sound_effects"
+                android:entries="@array/robot_sound_effects"/>
         <ListPreference
                 android:dialogIcon="@drawable/blue_btn"
                 android:title="Blue button sound effect"
                 android:key="blue_listPreference"
                 android:icon="@drawable/blue_btn_icon"
-                android:entryValues="@array/hitech_sound_effects"
-                android:entries="@array/hitech_sound_effects"/>
+                android:entryValues="@array/robot_sound_effects"
+                android:entries="@array/robot_sound_effects"/>
         <ListPreference
                 android:dialogIcon="@drawable/green_btn"
                 android:title="Green button sound effect"
                 android:key="green_listPreference"
                 android:icon="@drawable/green_btn_icon"
-                android:entryValues="@array/hitech_sound_effects"
-                android:entries="@array/hitech_sound_effects"/>
+                android:entryValues="@array/robot_sound_effects"
+                android:entries="@array/robot_sound_effects"/>
         <ListPreference
                 android:dialogIcon="@drawable/yellow_btn"
                 android:title="Yellow button sound effect"
                 android:key="yellow_listPreference"
                 android:icon="@drawable/yellow_btn_icon"
-                android:entryValues="@array/hitech_sound_effects"
-                android:entries="@array/hitech_sound_effects"/>
+                android:entryValues="@array/robot_sound_effects"
+                android:entries="@array/robot_sound_effects"/>
 
         <SwitchPreference
                 android:title="Default sound effects"
@@ -130,3 +130,5 @@
         </PreferenceScreen>
     </PreferenceCategory>
 </PreferenceScreen>
+
+

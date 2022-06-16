@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SimonSays</string>
+    <string name="start">שחק</string>
+    <string name="game_name">סיימון המשוגע</string>
+    <string name="game_name_preview">נסו לשמור על שפיותכם</string>
+    <string name="play_btn">התחילו לשחק</string>
+    <string name="collection_btn">האוסף שלי</string>
+    <string name="conductor_btn">מנצח בית המשוגעים</string>
+    <string name="share_btn">אל תשמור שתף לחברים</string>
+    <string name="record_btn">הקלט</string>
+    <string name="stop_btn">סיים</string>
+    <string name="save_btn">שמור</string>
+</resources>

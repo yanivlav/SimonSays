@@ -2,6 +2,7 @@
     <string name="app_name">SimonSays</string>
     <string name="start">start</string>
 
+
     <string-array name="list_entries">
         <item>Easy</item>
         <item>Intermediate</item>
@@ -108,6 +109,15 @@
         <item>alarm_tone</item>
     </string-array>
 
+    <string name="game_name" translatable="false">₱₴Ɏ₵ⱧØ ₴ł₥Ø₦</string>
+    <string name="game_name_preview">TᖇY TO ᗰᗩIᑎTᗩIᑎ ᔕᗩᑎIT</string>
+    <string name="play_btn">ⱠɆ₮ ₮ⱧɆ ₲₳₥Ɇ ฿Ɇ₲ł₦</string>
+    <string name="collection_btn">₥Ɏ ₵ØⱠⱠɆ₵₮łØ₦</string>
+    <string name="conductor_btn">₵Ø₦ĐɄ₵₮ØⱤ Ø₣ ₮ⱧɆ ØⱤ₵ⱧɆ₴₮Ɽ₳</string>
+    <string name="share_btn">₴Ⱨ₳ⱤɆ ₮ⱧɆ ₥₳Đ₦Ɇ₴₴</string>
+    <string name="record_btn">Record</string>
+    <string name="stop_btn">Stop</string>
+    <string name="save_btn">Save</string>
 
 
 </resources>
