@@ -9,39 +9,27 @@
         android:gravity="center"
         tools:context=".ConductorActivity">
 
-    <Button
+
+
+    <TextView
             android:id="@+id/recordBtn"
+            android:background="@color/purple_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:text="@string/record_btn"
+            android:padding="10dp"
             android:textColor="@color/white"
             android:textSize="15dp" />
 
-    <Button
+    <TextView
             android:id="@+id/stopBtn"
+            android:background="@color/purple_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/recordBtn"
             android:text="@string/stop_btn"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-
-    <Button
-            android:text="Pouse"
-            android:layout_toRightOf="@+id/stopBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="15dp"
-            android:id="@+id/pouseBtn"/>
-
-    <Button
-            android:id="@+id/saveBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/pouseBtn"
-            android:text="@string/save_btn"
+            android:padding="10dp"
             android:textColor="@color/white"
             android:textSize="15dp" />
 

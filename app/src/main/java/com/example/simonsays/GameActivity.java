@@ -1,13 +1,17 @@
 package com.example.simonsays;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,8 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
-    Button blueBtn, yellowBtn, redBtn, greenBtn,startBtn;
-    ImageView blueBtnIV;
+    //    Button blueBtn, yellowBtn, redBtn, greenBtn,startBtn;
     private int roundNumber;
     private int AIe;
     private int highScore;
@@ -27,126 +30,68 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Integer> playerAnswers;
     String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
 
+    //    Button recBtn, stopBtn;
+    ImageView blueIV, redIV, greenIV, yellowIV;
+    Button startBtn,restartBtn;
+
+    private MediaPlayer mPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        blueBtnIV = findViewById(R.id.blue_btn);
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
-
-//        blueBtn = (Button) findViewById(R.id.blue_btn);
-        yellowBtn = (Button)findViewById(R.id.yellow_btn);
-        redBtn = (Button)findViewById(R.id.red_btn);
-        greenBtn = (Button)findViewById(R.id.green_btn);
-//        startBtn = (Button)findViewById(R.id.start_btn);
-
-        final MediaPlayer mpb = MediaPlayer.create(this,R.raw.boy_says_volcano);
-        final MediaPlayer mpr = MediaPlayer.create(this,R.raw.robot_says_yes);
-        final MediaPlayer mpy = MediaPlayer.create(this,R.raw.scifi_artificial_intelligence_speaks);
-        final MediaPlayer mpg = MediaPlayer.create(this,R.raw.scifi_robot_says_no);
-
-        Intent intent = getIntent();
-
-        userRedBtnSE = intent.getStringExtra("RedBtnSE");
-        userBlueBtnSE = intent.getStringExtra("BlueBtnSE");
-        userGreenBtnSE = intent.getStringExtra("GreenBtnSE");
-        userYellowBtnSE = intent.getStringExtra("YellowBtnSE");
-        userNickname = intent.getStringExtra("Nickname");
-        UserSoundchise = intent.getStringExtra("Soundchise");
-        userDiff = intent.getStringExtra("userDiff");
-
-
-
-//        Timer timer = new Timer();
+        //sound effects from Preferences
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        userRedBtnSE = sp.getString("red_listPreference", "");
+        userBlueBtnSE = sp.getString("blue_listPreference", "");
+        userGreenBtnSE = sp.getString("green_listPreference", "");
+        userYellowBtnSE = sp.getString("yellow_listPreference", "");
+        //buttons
+        blueIV = findViewById(R.id.blue_IV);
+        redIV = findViewById(R.id.red_IV);
+        yellowIV = findViewById(R.id.yellow_IV);
+        greenIV = findViewById(R.id.green_IV);
+        startBtn = findViewById(R.id.start_btn);
+        restartBtn = findViewById(R.id.restart_btn);
 //
-//
-//
-//        int level = 1;//counter for level
-//
-////        Button[] buttons = {blueBtn,yellowBtn,redBtn,greenBtn};
-//
-//        Random rand = new Random();
-////        int randNum = rand.nextInt(3);
-//
-//        ArrayList<String> first = new ArrayList<>();
 
-//        first.add(colors[randNum]);
 
-//        //initialize 100 first colors
-//        for (int i = 0; i < 100 ; i++){
-//            first.add(colors[rand.nextInt(3)]);
-//
+        restartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GameActivity.this,GameActivity.class);
+                startActivity(intent);
+//                onRestart();
+            }
+        });
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AIe = 0;
+                highScore = 20;
+                chain = 0;
+                roundNumber = 1;
+                AI = new ArrayList<>();
+                sequence = new ArrayList<>();
+                playerAnswers = new ArrayList<>();
+                // green = 0, red = 1, yellow = 2, blue = 3
+//                Toast.makeText(getApplicationContext(),"Game Started", Toast.LENGTH_SHORT).show();
+                flashSequence();
+
+            }
+        });
+//        Draw();
+//        for (int i = 0 ; i < 10 ; i++) {
+//        Toast.makeText(getApplicationContext(),"Score: " + chain,Toast.LENGTH_SHORT).show();
+//        if (AIe == 1) {
+//            Toast.makeText(getApplicationContext(),"cpu play",Toast.LENGTH_SHORT).show();
+//            Draw();
+//        } else {
+//            Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT).show();
+//            }
 //        }
-//        for (int i = 0 ; i < first.size(); i++){
-//                switch(first.get(i)) {
-//                    case "Blue":
-//                        mpb.start();
-//                        break;
-//                    case "Red":
-//                        mpr.start();
-//                        break;
-//                    case "Green":
-//                        mpg.start();
-//                        break;
-//                    case "Yellow":
-//                        mpy.start();
-//                        break;
-//                    default:
-//                        // code block
-//                }
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//        }
-
-//        while (level < 100){
-//            for (int i = 0 ; i < level; i++){
-//                switch(first.get(i)) {
-//                    case "Blue":
-//                        mpb.start();
-//                        break;
-//                    case "Red":
-//                        mpr.start();
-//                        break;
-//                    case "Green":
-//                        mpg.start();
-//                        break;
-//                    case "Yellow":
-//                        mpy.start();
-//                        break;
-//                    default:
-//                        // code block
-//                }
-////        private int checkCurrentSteam(ArrayList<String> first, ArrayList<String> clickStream){
-////            for (int i = 0 ; i < first.toArray().length; i++){
-////                if (first[i] != clickStream[i]){
-////                    return 0;
-////                }
-////                return 1;
-////            }
-//
-//            }//for
-//            level++;
-//        }//while
-
-        AIe = 0;
-        highScore = 20;
-        chain = 0;
-        roundNumber = 1;
-//        int[] AI,sequence,playerAnswers = new int[100];
-        AI = new ArrayList<>();
-        sequence = new ArrayList<>();
-        playerAnswers = new ArrayList<>();
-//        sequence.add(0);
-        // green = 0, red = 1, yellow = 2, blue = 3
-
-        flashSequence();
-
-
 
 //        timedLoop(10, function() {
 //            setText("chain", "Score: " + chain);
@@ -160,54 +105,72 @@ public class GameActivity extends AppCompatActivity {
 //        });
 
 
-        blueBtnIV.setOnClickListener(new View.OnClickListener() {
+        blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mpb.start();
-                AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
-                animationDrawable.start();
-                blueBtnIV.setEnabled(false);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                    }
-                }, 1000);
-                animationDrawable.stop();
-                blueBtnIV.setEnabled(true);
-            }
-        });
-//        blueBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                mpb.start();
-//                flashBlue();
-//            }
-//        });
+                if (userBlueBtnSE.isEmpty()) {
+                    playBtnSound("boy_says_volcano");
+                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    playBtnSound(userBlueBtnSE);
+                buttonAnimation(blueIV);
 
-        redBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mpr.start();
-                flashRed();
+                playerAnswers.add(3);
+                checkAnswer();
+
             }
         });
 
-        greenBtn.setOnClickListener(new View.OnClickListener() {
+        redIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mpg.start();
-                flashGreen();
+                if (userBlueBtnSE.isEmpty()) {
+                    playBtnSound("boy_says_volcano");
+                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    playBtnSound(userRedBtnSE);
+                buttonAnimation(redIV);
+
+                playerAnswers.add(1);
+                checkAnswer();
             }
         });
 
-        yellowBtn.setOnClickListener(new View.OnClickListener() {
+        greenIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mpy.start();
-                flashYellow();
+                if (userBlueBtnSE.isEmpty()) {
+                    playBtnSound("boy_says_volcano");
+                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    playBtnSound(userGreenBtnSE);
+                buttonAnimation(greenIV);
+
+                playerAnswers.add(0);
+                checkAnswer();
+            }
+        });
+
+        yellowIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (userBlueBtnSE.isEmpty()) {
+                    playBtnSound("boy_says_volcano");
+                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+                }
+                else
+                    playBtnSound(userYellowBtnSE);
+                buttonAnimation(yellowIV);
+
+                playerAnswers.add(2);
+                checkAnswer();
             }
         });
     }
+
 
     private void flashSequence() {
         List<Integer> playerAnswers = new ArrayList<>();
@@ -216,31 +179,54 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < roundNumber; i++) {
             int currentLight = sequence.get(i);
             AI = sequence;
+            wait1(1000);
             //should activate a flash for button by numbers finish the functions
-//            if(currentLight === 0) flashGreen();
-//            if(currentLight === 1) flashRed();
-//            if(currentLight === 2) flashYellow();
-//            if(currentLight === 3) flashBlue();
-
+            if(currentLight == 0) flashGreen();
+            if(currentLight == 1) flashRed();
+            if(currentLight == 2) flashYellow();
+            if(currentLight == 3) flashBlue();
         }
     }
 
     private void checkAnswer(){
-            // sequence [1, 2, 3, 0]
-            // playerAns [1, 2, 3, 0]
-            int currentAnswerIndex = playerAnswers.size() - 1;
-            int currentAnswer = playerAnswers.get(currentAnswerIndex);
-            if (currentAnswer != sequence.get(currentAnswerIndex)) {
-                gameOver();
-            } else if ((currentAnswerIndex == sequence.size() - 1)) { //last answer
-                roundNumber++;
-                wait(1000);
-                flashSequence();
-                chain = chain + 1;
-            }
-        }
+        // sequence [1, 2, 3, 0]
+        // playerAns [1, 2, 3, 0]
+        int currentAnswerIndex = playerAnswers.size() - 1;
+        int currentAnswer = playerAnswers.get(currentAnswerIndex);
+        if (currentAnswer != sequence.get(currentAnswerIndex)) {
+            gameOver();
+        } else if ((currentAnswerIndex == sequence.size() - 1)) { //last answer
 
-    private void Draw() {
+//                for (int i =0 ; i < playerAnswers.size(); i++){
+//                    if (playerAnswers.get(i) != sequence.get(i))
+//                }
+
+
+            playerAnswers.clear();
+
+            roundNumber++;
+//                wait(1000);
+//                flashSequence();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    flashSequence();
+
+//                        int i = 0;
+//                        while(i<roundNumber){
+//                            wait1(1000);
+//                            i++;
+//                        }
+
+
+
+                }
+            }, 2000);//
+            chain = chain + 1;
+        }
+    }
+
+    private void Draw() {//run again
         if (sequence == AI) {
             flashSequence();
             roundNumber++;
@@ -261,36 +247,91 @@ public class GameActivity extends AppCompatActivity {
 //        wait(50);
 //        setText("highScore", highScore);
 //        wait(2000);
-        }
+        Toast.makeText(getApplicationContext(),"Game Over", Toast.LENGTH_SHORT).show();
+
+
+    }
 
 
     private void flashGreen(){
-        //
+
+//            greenIV.setEnabled(false);
+
+        if (userGreenBtnSE.isEmpty()) {
+            playBtnSound("boy_says_volcano");
+            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+        }
+        else
+            playBtnSound(userGreenBtnSE);
+        buttonAnimation(greenIV);
+        Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+//            greenIV.setEnabled(true);
+
     }
 
-    private void flashRed(){
+    private  void flashRed(){
+
+//            redIV.setEnabled(false);
+
+        if (userRedBtnSE.isEmpty()) {
+            playBtnSound("boy_says_volcano");
+            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+        }
+        else
+            playBtnSound(userRedBtnSE);
+        buttonAnimation(redIV);
+        Toast.makeText(getApplicationContext(),"simon says red", Toast.LENGTH_SHORT).show();
+//            redIV.setEnabled(true);
+
+
 
     }
 
     private void flashYellow(){
+//            yellowIV.setEnabled(false);
 
+        if (userYellowBtnSE.isEmpty()) {
+            playBtnSound("boy_says_volcano");
+            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+        }
+        else
+            playBtnSound(userYellowBtnSE);
+        buttonAnimation(yellowIV);
+        Toast.makeText(getApplicationContext(),"simon says yellow", Toast.LENGTH_SHORT).show();
+//            yellowIV.setEnabled(true);
     }
 
     private void flashBlue(){
-//        mpb.start();
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueBtnIV.getDrawable();
-        animationDrawable.start();
-        blueBtnIV.setEnabled(false);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            }
-        }, 1000);
-        animationDrawable.stop();
-        blueBtnIV.setEnabled(true);
+
+//            blueIV.setEnabled(false);
+
+        if (userBlueBtnSE.isEmpty()) {
+            playBtnSound("boy_says_volcano");
+            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+        }
+        else
+            playBtnSound(userBlueBtnSE);
+        buttonAnimation(blueIV);
+        Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+//            blueIV.setEnabled(true);
     }
 
     private void wait(int ms){
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                flashSequence();
+            }
+        }, 1000);//        try {
+//            Thread.sleep(ms);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+    private void wait1(int ms){
+
         try {
             Thread.sleep(ms);
         } catch (InterruptedException e) {
@@ -302,6 +343,19 @@ public class GameActivity extends AppCompatActivity {
         MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
         mPlayer.start();
     }
+
+    private void buttonAnimation(ImageView color){
+        AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
+        animationDrawable.start();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                animationDrawable.stop();
+            }
+        }, 1000);
+    }
+
+
 
 
 

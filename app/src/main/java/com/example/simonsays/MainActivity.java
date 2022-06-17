@@ -1,15 +1,27 @@
 package com.example.simonsays;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button share;
+    ImageView imageView;
 
     Button next_Activity_button, conductorBtn;
     String userRedBtnSE, userBlueBtnSE, userGreenBtnSE, userYellowBtnSE;
@@ -22,11 +34,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        listTv = findViewById(R.id.list_pref_result);
-//        multiTv = findViewById(R.id.multi_select_pref_result);
-//        editTextTv = findViewById(R.id.edit_text_pref_result);
-//        prefSwitch = findViewById(R.id.switch_pref_result);
-//        prefCheckBox = findViewById(R.id.checkbox_pref_result);
+        share = findViewById(R.id.share_button);
+        imageView = findViewById(R.id.home_page2);
+
+        // initialising text field where we will enter data
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Now share image function will be called
+                // here we  will be passing the text to share
+                // Getting drawable value from image
+                BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
+                Bitmap bitmap = bitmapDrawable.getBitmap();
+                shareImageandText(bitmap);
+            }
+        });
 
         conductorBtn = findViewById(R.id.conductor_button);
         conductorBtn.setOnClickListener(new View.OnClickListener() {
@@ -62,23 +84,43 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == SETTINGS_REQUEST) {
-//
-//            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-//
-//            userRedBtnSE = sp.getString("red_listPreference", "");
-//            Toast.makeText(getApplicationContext(),sp.getString("red_listPreference", "").toString(), Toast.LENGTH_SHORT).show();
-////            userBlueBtnSE = sp.getString("blue_listPreference", "");
-////            userGreenBtnSE = sp.getString("green_listPreference", "");
-////            userYellowBtnSE = sp.getString("yellow_listPreference", "");
-////            userNickname = sp.getString("nickname_edit_text_prefernce", "");
-////            UserSoundchise = sp.getString("sound_checkbox", "");
-////            userDiff = sp.getString("difficulty_listPreference", "");
-//
-//        }
-//    }
+
+    private void shareImageandText(Bitmap bitmap) {
+        Uri uri = getmageToShare(bitmap);
+        Intent intent = new Intent(Intent.ACTION_SEND);
+
+        // putting uri of image to be shared
+        intent.putExtra(Intent.EXTRA_STREAM, uri);
+
+        // adding text to share
+        intent.putExtra(Intent.EXTRA_TEXT, "Sharing Image");
+
+        // Add subject Here
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
+
+        // setting type to image
+        intent.setType("image/jpg");
+
+        // calling startactivity() to share
+        startActivity(Intent.createChooser(intent, "Share Via"));
+    }
+
+    // Retrieving the url to share
+    private Uri getmageToShare(Bitmap bitmap) {
+        File imagefolder = new File(getCacheDir(), "images");
+        Uri uri = null;
+        try {
+            imagefolder.mkdirs();
+            File file = new File(imagefolder, "homepage2.jpg");
+            FileOutputStream outputStream = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+            outputStream.flush();
+            outputStream.close();
+            uri = FileProvider.getUriForFile(this, "com.example.simonsays", file);
+        } catch (Exception e) {
+            Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+        return uri;
+    }
 
 }
