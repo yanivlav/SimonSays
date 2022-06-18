@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     Button share;
     ImageView imageView;
 
-    Button next_Activity_button, conductorBtn;
+    Button next_Activity_button, conductorBtn, collectionBtn;
     String userRedBtnSE, userBlueBtnSE, userGreenBtnSE, userYellowBtnSE;
     String userNickname, UserSoundchise, userDiff;
     public static final int SETTINGS_REQUEST = 1;
@@ -36,6 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
         share = findViewById(R.id.share_button);
         imageView = findViewById(R.id.home_page2);
+
+        collectionBtn = findViewById(R.id.conductor_button);
+        collectionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CollectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        int score = getIntent().getIntExtra("game_score",-1);
 
         // initialising text field where we will enter data
         share.setOnClickListener(new View.OnClickListener() {

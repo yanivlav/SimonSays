@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -25,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     private int AIe;
     private int highScore;
     private int chain;
+    private int score;
     ArrayList<Integer> AI;
     ArrayList<Integer> sequence;
     ArrayList<Integer> playerAnswers;
@@ -32,7 +32,7 @@ public class GameActivity extends AppCompatActivity {
 
     //    Button recBtn, stopBtn;
     ImageView blueIV, redIV, greenIV, yellowIV;
-    Button startBtn,restartBtn;
+    Button startBtn,restartBtn, homeBtn;
 
     private MediaPlayer mPlayer;
 
@@ -47,13 +47,24 @@ public class GameActivity extends AppCompatActivity {
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
-        //buttons
+
+
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
         startBtn = findViewById(R.id.start_btn);
         restartBtn = findViewById(R.id.restart_btn);
+        homeBtn = findViewById(R.id.home_btn);
+
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                intent.putExtra("game_score", score);
+                startActivity(intent);
+            }
+        });
 //
 
 
@@ -62,7 +73,6 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(GameActivity.this,GameActivity.class);
                 startActivity(intent);
-//                onRestart();
             }
         });
         startBtn.setOnClickListener(new View.OnClickListener() {
@@ -108,14 +118,7 @@ public class GameActivity extends AppCompatActivity {
         blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userBlueBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    playBtnSound(userBlueBtnSE);
-                buttonAnimation(blueIV);
-
+                flashBlue(0);
                 playerAnswers.add(3);
                 checkAnswer();
 
@@ -125,14 +128,7 @@ public class GameActivity extends AppCompatActivity {
         redIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userBlueBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    playBtnSound(userRedBtnSE);
-                buttonAnimation(redIV);
-
+                flashRed(0);
                 playerAnswers.add(1);
                 checkAnswer();
             }
@@ -141,14 +137,7 @@ public class GameActivity extends AppCompatActivity {
         greenIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userBlueBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    playBtnSound(userGreenBtnSE);
-                buttonAnimation(greenIV);
-
+                flashGreen(0);
                 playerAnswers.add(0);
                 checkAnswer();
             }
@@ -157,14 +146,7 @@ public class GameActivity extends AppCompatActivity {
         yellowIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userBlueBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-                }
-                else
-                    playBtnSound(userYellowBtnSE);
-                buttonAnimation(yellowIV);
-
+                flashYellow(0);
                 playerAnswers.add(2);
                 checkAnswer();
             }
@@ -179,12 +161,29 @@ public class GameActivity extends AppCompatActivity {
         for (int i = 0; i < roundNumber; i++) {
             int currentLight = sequence.get(i);
             AI = sequence;
-            wait1(1000);
+
             //should activate a flash for button by numbers finish the functions
-            if(currentLight == 0) flashGreen();
-            if(currentLight == 1) flashRed();
-            if(currentLight == 2) flashYellow();
-            if(currentLight == 3) flashBlue();
+            if(currentLight == 0) {
+//                wait1(500);
+                flashGreen(1);
+//                Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+            }
+            if(currentLight == 1) {
+//                wait1(500);
+                flashRed(1);
+//                Toast.makeText(getApplicationContext(),"simon says red", Toast.LENGTH_SHORT).show();
+            }
+            if(currentLight == 2) {
+//                wait1(500);
+                flashYellow(1);
+//                Toast.makeText(getApplicationContext(),"simon says yellow", Toast.LENGTH_SHORT).show();
+            }
+            if(currentLight == 3) {
+//                wait1(500);
+                flashBlue(1);
+//                Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
@@ -195,34 +194,15 @@ public class GameActivity extends AppCompatActivity {
         int currentAnswer = playerAnswers.get(currentAnswerIndex);
         if (currentAnswer != sequence.get(currentAnswerIndex)) {
             gameOver();
-        } else if ((currentAnswerIndex == sequence.size() - 1)) { //last answer
-
-//                for (int i =0 ; i < playerAnswers.size(); i++){
-//                    if (playerAnswers.get(i) != sequence.get(i))
-//                }
-
-
+            score = 0;
+        } else if ((currentAnswerIndex == sequence.size() - 1)) //last answer
+        {
             playerAnswers.clear();
-
             roundNumber++;
-//                wait(1000);
-//                flashSequence();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    flashSequence();
-
-//                        int i = 0;
-//                        while(i<roundNumber){
-//                            wait1(1000);
-//                            i++;
-//                        }
-
-
-
-                }
-            }, 2000);//
+//            wait1(1500);
+            flashSequence();
             chain = chain + 1;
+            score++;
         }
     }
 
@@ -230,7 +210,7 @@ public class GameActivity extends AppCompatActivity {
         if (sequence == AI) {
             flashSequence();
             roundNumber++;
-            wait(1000);
+//            wait(1000);
             flashSequence();
             chain = chain + 1;
         }
@@ -253,83 +233,89 @@ public class GameActivity extends AppCompatActivity {
     }
 
 
-    private void flashGreen(){
+    private void flashGreen(int sender){
 
-//            greenIV.setEnabled(false);
-
+        if (sender == 1)
+            greenIV.setEnabled(false);
+        buttonAnimation(greenIV);
         if (userGreenBtnSE.isEmpty()) {
             playBtnSound("boy_says_volcano");
-            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
         }
         else
             playBtnSound(userGreenBtnSE);
-        buttonAnimation(greenIV);
-        Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+            greenIV.setEnabled(true);
+
+//        if (sender == 1) wait1(1000);
 //            greenIV.setEnabled(true);
 
     }
 
-    private  void flashRed(){
+    private  void flashRed(int sender){
 
-//            redIV.setEnabled(false);
-
+        if (sender == 1)
+            redIV.setEnabled(false);
+        buttonAnimation(redIV);
         if (userRedBtnSE.isEmpty()) {
             playBtnSound("boy_says_volcano");
-            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
         }
         else
             playBtnSound(userRedBtnSE);
-        buttonAnimation(redIV);
-        Toast.makeText(getApplicationContext(),"simon says red", Toast.LENGTH_SHORT).show();
+            redIV.setEnabled(true);
+//        if (sender == 1) wait1(1000);
 //            redIV.setEnabled(true);
 
 
 
     }
 
-    private void flashYellow(){
-//            yellowIV.setEnabled(false);
-
+    private void flashYellow(int sender){
+        if (sender == 1)
+            yellowIV.setEnabled(false);
+        buttonAnimation(yellowIV);
         if (userYellowBtnSE.isEmpty()) {
             playBtnSound("boy_says_volcano");
-            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
         }
         else
             playBtnSound(userYellowBtnSE);
-        buttonAnimation(yellowIV);
-        Toast.makeText(getApplicationContext(),"simon says yellow", Toast.LENGTH_SHORT).show();
+            yellowIV.setEnabled(true);
+
+
+//        if (sender == 1) wait1(1000);
 //            yellowIV.setEnabled(true);
     }
 
-    private void flashBlue(){
-
-//            blueIV.setEnabled(false);
-
+    private void flashBlue(int sender){
+        if (sender == 1)
+            blueIV.setEnabled(false);
+        buttonAnimation(blueIV);
         if (userBlueBtnSE.isEmpty()) {
             playBtnSound("boy_says_volcano");
-            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
         }
         else
             playBtnSound(userBlueBtnSE);
-        buttonAnimation(blueIV);
-        Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
+            blueIV.setEnabled(true);
+
+
+//        if (sender == 1) wait1(1000);
+
 //            blueIV.setEnabled(true);
     }
 
-    private void wait(int ms){
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                flashSequence();
-            }
-        }, 1000);//        try {
-//            Thread.sleep(ms);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-    }
-
+//    private void wait(int ms){
+//
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+////                flashSequence();
+//            }
+//        }, 1000);//
+//
+//    }
+//
     private void wait1(int ms){
 
         try {
