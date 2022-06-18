@@ -21,6 +21,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_1"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_1"/>
+                android:src="@drawable/question"/>
         <TextView
                 android:id="@+id/level1TV"
                 android:layout_width="wrap_content"
@@ -41,6 +42,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_2"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -49,7 +51,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_2"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level2TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,6 +63,7 @@
 
 
         <ImageView
+                android:id="@+id/monky_level_3"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -69,7 +72,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_3"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level3TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -80,6 +83,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_4"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,7 +92,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_4"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level4TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -99,6 +103,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_5"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -107,7 +112,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_5"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level5TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -119,6 +124,7 @@
 
 
         <ImageView
+                android:id="@+id/monky_level_6"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +133,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_6"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level6TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,6 +144,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_7"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -146,7 +153,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_7"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level7TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -157,6 +164,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_8"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -165,7 +173,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_8"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level8TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -176,6 +184,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_9"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -184,7 +193,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_9"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level9TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -195,6 +204,7 @@
                 android:layout_gravity="center"/>
 
         <ImageView
+                android:id="@+id/monky_level_10"
                 android:paddingTop="40dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -203,7 +213,7 @@
                 android:maxHeight="200dp"
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
-                android:src="@drawable/monky_level_10"/>
+                android:src="@drawable/question"/>
         <TextView android:id="@+id/level10TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

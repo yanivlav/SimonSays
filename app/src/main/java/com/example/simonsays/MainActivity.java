@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         share = findViewById(R.id.share_button);
         imageView = findViewById(R.id.home_page2);
 
-        collectionBtn = findViewById(R.id.conductor_button);
+        collectionBtn = findViewById(R.id.collection_activity_button);
         collectionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

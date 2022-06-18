@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
     private int AIe;
     private int highScore;
     private int chain;
-    private int score;
+    private int score, best_score;
     ArrayList<Integer> AI;
     ArrayList<Integer> sequence;
     ArrayList<Integer> playerAnswers;
@@ -35,7 +35,7 @@ public class GameActivity extends AppCompatActivity {
     Button startBtn,restartBtn, homeBtn;
 
     private MediaPlayer mPlayer;
-
+    SharedPreferences spscore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
+
+        sp = getSharedPreferences("scoreFile", MODE_PRIVATE);
 
 
         blueIV = findViewById(R.id.blue_IV);
@@ -330,6 +332,17 @@ public class GameActivity extends AppCompatActivity {
         mPlayer.start();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = spscore.edit();
+        if (spscore.getInt("bestScore",-1)>spscore.getInt("lastScore",-1))
+            editor.putInt("bestScore", spscore.getInt("lastScore",-1));
+        editor.putInt("lastScore", score);
+        editor.commit();
+
+    }
+
     private void buttonAnimation(ImageView color){
         AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
         animationDrawable.start();
@@ -339,6 +352,8 @@ public class GameActivity extends AppCompatActivity {
                 animationDrawable.stop();
             }
         }, 1000);
+
+
     }
 
 
