@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         next_Activity_button = (Button) findViewById(R.id.first_activity_button);
         next_Activity_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GameActivity.class);
+                Intent intent = new Intent(MainActivity.this, GameActivity2.class);
                 startActivity(intent);
             }
         });

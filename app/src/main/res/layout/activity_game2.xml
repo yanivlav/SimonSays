@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@color/black"
+        android:orientation="vertical"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="center"
+        tools:context=".ConductorActivity">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info"
+            android:textColor="@color/white"/>
+
+    <TextView
+            android:id="@+id/Scorebox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"/>
+
+    <Button
+            android:id="@+id/home_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="home"/>
+
+    <Button
+            android:id="@+id/start_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Start"/>
+    <Button
+            android:id="@+id/restart_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="reStart"/>
+
+
+    <ImageView
+            android:id="@+id/red_IV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/red_btn_animation"
+            android:gravity="center"
+            android:layout_below="@+id/recordBtn"/>
+
+    <ImageView
+            android:id="@+id/green_IV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/red_IV"
+            android:src="@drawable/green_btn_animation"
+            android:layout_below="@+id/yellow_IV"/>
+
+
+
+    <ImageView
+            android:id="@+id/blue_IV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:src="@drawable/blue_btn_animation"
+            android:layout_below="@+id/red_IV"/>
+
+    <ImageView
+            android:id="@+id/yellow_IV"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_toRightOf="@+id/blue_IV"
+            android:src="@drawable/yellow_btn_animation"
+            android:layout_below="@id/recordBtn"/>
+
+
+
+
+</LinearLayout>
+

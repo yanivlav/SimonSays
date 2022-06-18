@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
-    //    Button blueBtn, yellowBtn, redBtn, greenBtn,startBtn;
     private int roundNumber;
     private int AIe;
     private int highScore;
@@ -94,27 +93,6 @@ public class GameActivity extends AppCompatActivity {
 
             }
         });
-//        Draw();
-//        for (int i = 0 ; i < 10 ; i++) {
-//        Toast.makeText(getApplicationContext(),"Score: " + chain,Toast.LENGTH_SHORT).show();
-//        if (AIe == 1) {
-//            Toast.makeText(getApplicationContext(),"cpu play",Toast.LENGTH_SHORT).show();
-//            Draw();
-//        } else {
-//            Toast.makeText(getApplicationContext(),"",Toast.LENGTH_SHORT).show();
-//            }
-//        }
-
-//        timedLoop(10, function() {
-//            setText("chain", "Score: " + chain);
-//            if (AIe == 1) {
-//                setText("cpuFac", "Cpu Play");
-//                wait(500);
-//                Draw();
-//            } else {
-//                setText("cpuFac", "");
-//            }
-//        });
 
 
         blueIV.setOnClickListener(new View.OnClickListener() {
@@ -332,6 +310,17 @@ public class GameActivity extends AppCompatActivity {
         mPlayer.start();
     }
 
+    private void buttonAnimation(ImageView color) {
+        AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
+        animationDrawable.start();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                animationDrawable.stop();
+            }
+        }, 1000);
+    }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -342,23 +331,5 @@ public class GameActivity extends AppCompatActivity {
         editor.commit();
 
     }
-
-    private void buttonAnimation(ImageView color){
-        AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
-        animationDrawable.start();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                animationDrawable.stop();
-            }
-        }, 1000);
-
-
-    }
-
-
-
-
-
 
 }

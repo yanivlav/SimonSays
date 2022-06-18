@@ -10,6 +10,9 @@
         android:supportsRtl="false"
         android:theme="@style/Theme.SimonSays">
         <activity
+            android:name=".GameActivity2"
+            android:exported="false" />
+        <activity
             android:name=".CollectionActivity"
             android:exported="false" />
         <activity
