@@ -11,4 +11,6 @@
     <string name="record_btn">הקלט</string>
     <string name="stop_btn">סיים</string>
     <string name="save_btn">שמור</string>
+    <string name="settings">הגדרות</string>
+    <string name="instructions">איך לשחק?</string>
 </resources>
