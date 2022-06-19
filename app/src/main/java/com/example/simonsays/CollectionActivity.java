@@ -1,8 +1,10 @@
 package com.example.simonsays;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,8 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CollectionActivity extends AppCompatActivity {
 
     ImageView monky1, monky2, monky3, monky4, monky5, monky6, monky7, monky8, monky9, monky10;
-    TextView lavel1, level2, lavel3, level4, lavel5, level6, lavel7, level8, lavel9, level10, score;
+    TextView lavel1, level2, lavel3, level4, lavel5, level6, lavel7, level8, lavel9, level10;
+    EditText bestScoreET;
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +50,17 @@ public class CollectionActivity extends AppCompatActivity {
         lavel9 = findViewById(R.id.level9TV);
         level10 = findViewById(R.id.level10TV);
 
-        SharedPreferences spscore = getSharedPreferences("scoreFile", MODE_PRIVATE);
-        int bestScore = spscore.getInt("bestScore",-1);
+        bestScoreET = findViewById(R.id.best_score);
 
-        if (bestScore >  4) monky1.setImageResource(R.drawable.monky_level_1);
+
+        SharedPreferences spscore = getSharedPreferences("scoreFile", 0);
+//        Toast.makeText(getApplicationContext(),(spscore.getInt("bestScore", 0)), Toast.LENGTH_LONG).show();
+
+        int bestScore = spscore.getInt("bestScore",0);
+//        bestScoreET.setText(bestScore+"");
+
+
+        if (bestScore >  2) monky1.setImageResource(R.drawable.monky_level_1);
         if (bestScore >  9) monky1.setImageResource(R.drawable.monky_level_2);
         if (bestScore >  19) monky1.setImageResource(R.drawable.monky_level_3);
         if (bestScore >  49) monky1.setImageResource(R.drawable.monky_level_4);
@@ -59,13 +70,6 @@ public class CollectionActivity extends AppCompatActivity {
         if (bestScore >  149) monky1.setImageResource(R.drawable.monky_level_8);
         if (bestScore >  175) monky1.setImageResource(R.drawable.monky_level_9);
         if (bestScore >  199) monky1.setImageResource(R.drawable.monky_level_10);
-
-
-
-
-
-
-
 
     }
 }

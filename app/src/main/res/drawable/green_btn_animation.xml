@@ -3,6 +3,6 @@
     android:oneshot="false">
     <item android:drawable="@drawable/green_btn_unpressed" android:duration="100"/>"
     <item android:drawable="@drawable/green_btn_pressed" android:duration="500"/>"
-    <item android:drawable="@drawable/green_btn_unpressed" android:duration="100"/>"
+    <item android:drawable="@drawable/green_btn_unpressed" android:duration="750"/>"
     
 </animation-list>

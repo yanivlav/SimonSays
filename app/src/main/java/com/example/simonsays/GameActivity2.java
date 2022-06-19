@@ -1,6 +1,6 @@
 package com.example.simonsays;
 
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -16,40 +16,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-public class GameActivity2 extends AppCompatActivity implements Runnable {
+public class GameActivity2 extends AppCompatActivity{
 
-    public static int s = 3;
-    public static int l = 1;
+    public static int s = 3, l = 1;
     public static boolean tutorialmode = false;
-    int tutorialcount = 0;
-    Random generator = new Random();
-    int count = 0;
-    int currentlevel= l-1;
-    int inputcount = 0;
-    int highscore = 0;
-    boolean firstdelay = true;
+    int score = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0;
     int [] correctInput = new int[500];
-
-
-
-
-
+    boolean firstdelay = true;
+    Random generator = new Random();
     ImageView blueIV, redIV, greenIV, yellowIV;
-    private int roundNumber;
-    private int AIe;
-    private int highScore;
-    private int chain;
-    private int score, best_score;
-    ArrayList<Integer> AI;
-    ArrayList<Integer> sequence;
-    ArrayList<Integer> playerAnswers;
     String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
-    //    Button recBtn, stopBtn;
-    Button startBtn,restartBtn, homeBtn,simonbutton;
-    private MediaPlayer mPlayer;
+    Button homeBtn,simonbutton;
     SharedPreferences spscore;
 
 
@@ -60,13 +39,13 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
         setContentView(R.layout.activity_game2);
 
         //sound effects from Preferences
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        spscore = getSharedPreferences("scoreFile",MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(GameActivity2.this);
         userRedBtnSE = sp.getString("red_listPreference", "");
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
 
-        sp = getSharedPreferences("scoreFile", MODE_PRIVATE);
 
 
         blueIV = findViewById(R.id.blue_IV);
@@ -74,8 +53,17 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
         simonbutton = findViewById(R.id.start_btn);
-        restartBtn = findViewById(R.id.restart_btn);
+
+
         homeBtn = findViewById(R.id.home_btn);
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GameActivity2.this,MainActivity.class);
+//                intent.putExtra("game_score", score);
+                startActivity(intent);
+            }
+        });
 
         if (tutorialmode){
             l = 1;
@@ -90,7 +78,7 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
 
 
 //        Button simonbutton = (Button) findViewById(R.id.Simon);
-        simonbutton.performClick();
+//        simonbutton.performClick();
         simonbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,69 +96,35 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
 
     public void lightupred(){
         redIV.setEnabled(false);
-        run();
-
-        AnimationDrawable animationDrawable = (AnimationDrawable) redIV.getDrawable();
-        animationDrawable.start();
-        Handler h = new Handler();
-        h.postDelayed(new Runnable(){
-            public void run(){
-                animationDrawable.stop();
-                animationDrawable.setVisible(true,true);
-                redIV.setEnabled(true);
-            }
-        }, 1400/s);
+        ImpRunn impR = new ImpRunn(userRedBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(redIV);
     }
 
     public void lightupyellow(){
         yellowIV.setEnabled(false);
-        run();
-
-        AnimationDrawable animationDrawable = (AnimationDrawable) yellowIV.getDrawable();
-        animationDrawable.start();
-        Handler h = new Handler();
-        h.postDelayed(new Runnable(){
-            public void run(){
-                Toast.makeText(getApplicationContext(), "!!!!!!!!!!", Toast.LENGTH_LONG).show();
-                animationDrawable.stop();
-                animationDrawable.setVisible(true,true);
-
-                yellowIV.setEnabled(true);
-            }
-        }, 1400/s);
+        ImpRunn impR = new ImpRunn(userYellowBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(yellowIV);
     }
 
     public void lightupgreen(){
         greenIV.setEnabled(false);
-        run();
 
-        AnimationDrawable animationDrawable = (AnimationDrawable) greenIV.getDrawable();
-        animationDrawable.start();
-        Handler h = new Handler();
-        h.postDelayed(new Runnable(){
-            public void run(){
-                animationDrawable.stop();
-                animationDrawable.setVisible(true,true);
-
-                greenIV.setEnabled(true);
-            }
-        }, 1400/s);
+        ImpRunn impR = new ImpRunn(userGreenBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(greenIV);
     }
 
     public void lightupblue(){
         blueIV.setEnabled(false);
-        run();
-
-        AnimationDrawable animationDrawable = (AnimationDrawable) blueIV.getDrawable();
-        animationDrawable.start();
-        Handler h = new Handler();
-        h.postDelayed(new Runnable(){
-            public void run(){
-                animationDrawable.stop();
-                animationDrawable.setVisible(true,true);
-                blueIV.setEnabled(true);
-            }
-        }, 1400/s);
+        ImpRunn impR = new ImpRunn(userBlueBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(blueIV);
     }
 
     public void allthelights(){
@@ -232,6 +186,12 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
 
     public void gameover(){
         if (!tutorialmode){
+            SharedPreferences.Editor editor = spscore.edit();
+        if (spscore.getInt("bestScore",0)>highscore-1)
+            editor.putInt("bestScore", (highscore - 1));
+            editor.putInt("lastScore", highscore-1);
+            editor.commit();
+
             Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1),
                     Toast.LENGTH_LONG).show();
         }
@@ -373,7 +333,7 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
     }
 
     private void playBtnSound(String fileName){
-        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
+        MediaPlayer mPlayer = MediaPlayer.create(GameActivity2.this, getResources().getIdentifier(fileName, "raw", getPackageName()));
         mPlayer.start();
     }
 
@@ -384,13 +344,43 @@ public class GameActivity2 extends AppCompatActivity implements Runnable {
             @Override
             public void run() {
                 animationDrawable.stop();
+                animationDrawable.setVisible(true,true);
+                color.setEnabled(true);
             }
-        }, 1000);
+        }, 1400);
+
+    }
+
+
+    class ImpRunn implements Runnable {
+        String userBtnSE;
+
+        public ImpRunn(String ColorSE){
+            userBtnSE=ColorSE;
+
+        }
+        @Override
+        public void run() {
+            playBtnSound(userBtnSE);
+        }
     }
 
     @Override
-    public void run() {
-        playBtnSound("boy_says_volcano");
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = spscore.edit();
+//        if (spscore.getInt("bestScore",0)>highscore-1) {
+            editor.putInt("bestScore", (highscore - 1));
+            Toast.makeText(getApplicationContext(), highscore, Toast.LENGTH_LONG).show();
+
+//        }
+        editor.putInt("lastScore", highscore-1);
+        editor.commit();
+        Toast.makeText(getApplicationContext(),spscore.getInt("bestScore",0), Toast.LENGTH_LONG).show();
+
+
     }
 
+
 }
+

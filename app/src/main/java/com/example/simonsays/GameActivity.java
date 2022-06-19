@@ -43,14 +43,14 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        //sound effects from Preferences
+//        sound effects from Preferences
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         userRedBtnSE = sp.getString("red_listPreference", "");
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
 
-        sp = getSharedPreferences("scoreFile", MODE_PRIVATE);
+        spscore= getSharedPreferences("scoreFile", MODE_PRIVATE);
 
 
         blueIV = findViewById(R.id.blue_IV);
@@ -61,14 +61,14 @@ public class GameActivity extends AppCompatActivity {
         restartBtn = findViewById(R.id.restart_btn);
         homeBtn = findViewById(R.id.home_btn);
 
-        homeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                intent.putExtra("game_score", score);
-                startActivity(intent);
-            }
-        });
+//        homeBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+//                intent.putExtra("game_score", score);
+//                startActivity(intent);
+//            }
+//        });
 //
 
 

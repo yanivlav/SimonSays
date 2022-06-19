@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             }
         });
 
-        int score = getIntent().getIntExtra("game_score",-1);
+//        int score = getIntent().getIntExtra("game_score",-1);
 
         // initialising text field where we will enter data
         share.setOnClickListener(new View.OnClickListener() {
