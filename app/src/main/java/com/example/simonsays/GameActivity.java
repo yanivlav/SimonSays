@@ -17,6 +17,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import androidx.appcompat.app.AlertDialog;
+
 
 public class GameActivity extends AppCompatActivity {
     private int roundNumber;
@@ -28,6 +30,7 @@ public class GameActivity extends AppCompatActivity {
     ArrayList<Integer> sequence;
     ArrayList<Integer> playerAnswers;
     String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
+
 
     //    Button recBtn, stopBtn;
     ImageView blueIV, redIV, greenIV, yellowIV;

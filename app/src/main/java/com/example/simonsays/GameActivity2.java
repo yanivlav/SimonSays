@@ -1,5 +1,6 @@
 package com.example.simonsays;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -18,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameActivity2 extends AppCompatActivity implements Runnable{
+public class GameActivity2 extends AppCompatActivity implements Runnable {
 
     public static int s = 3;
     public static int l = 1;

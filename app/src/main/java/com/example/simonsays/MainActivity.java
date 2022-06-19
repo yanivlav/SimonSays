@@ -1,5 +1,6 @@
 package com.example.simonsays;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -12,13 +13,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener  {
 
     Button share;
     ImageView imageView;
@@ -132,6 +134,26 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
         return uri;
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Confirm Shutdown").setMessage("Are you sure you want to exit?")
+                .setPositiveButton("yes",this).setNegativeButton("No",this).show();
+
+
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        if (which == DialogInterface.BUTTON_POSITIVE) {
+            finish();
+        }
+        else if(which == DialogInterface.BUTTON_NEGATIVE){
+
+        }
     }
 
 }
