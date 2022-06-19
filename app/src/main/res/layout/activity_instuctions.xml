@@ -7,14 +7,24 @@
     android:background="@color/black">
 
     <TextView
+            android:id="@+id/simon_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/game_name"
+            android:textColor="@color/white"
+            android:textSize="50dp" />
+
+    <TextView
             android:id="@+id/tv_1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SimonSays is a simple memory game!"
-            android:textColor="@color/white"
+            android:layout_below="@+id/simon_title"
             android:gravity="center"
-            android:textSize="20dp"
-            android:paddingTop="20dp"/>
+            android:paddingTop="50dp"
+            android:text="@string/psychosimon_is_a_simple_memory_game"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
 
     <TextView
             android:id="@+id/tv2"
@@ -23,7 +33,7 @@
             android:layout_below="@+id/tv_1"
             android:gravity="center"
             android:paddingTop="50dp"
-            android:text="Listen to what Simon says. Repeat the sequence of the lights in the same order as Simon."
+            android:text="@string/listen_to_what_simon_says_repeat_the_sequence_of_the_lights_in_the_same_order_as_simon"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
@@ -33,32 +43,59 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv2"
             android:gravity="center"
-            android:paddingTop="50dp"
-            android:text="Simon continues to add a step with each new level you reach so don't forget the sequence "
+            android:paddingTop="20dp"
+            android:text="@string/simon_continues_to_add_a_step_with_each_new_level_you_reach_so_don_t_forget_the_sequence"
             android:textColor="@color/white"
             android:textSize="20dp" />
 
-    <Button
-            android:id="@+id/tutorial_btn"
-            android:layout_width="wrap_content"
+
+    <TextView
+            android:id="@+id/tv4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv3"
             android:gravity="center"
+            android:paddingTop="20dp"
+            android:text="@string/you_can_also_record_your_own_sequences_using_the_conductor"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    <TextView
+            android:id="@+id/tv5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv4"
+            android:gravity="center"
+            android:paddingTop="20dp"
+            android:text="@string/try_beating_your_last_highscore_to_win_rewards"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/tutorial_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv5"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="Tutorial"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:text="@string/tutorial"
+            android:textColor="@color/white"
+
             />
 
-    <Button
+    <com.sanojpunchihewa.glowbutton.GlowButton
             android:id="@+id/ok_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tutorial_btn"
-            android:gravity="center"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
-            android:text="ok"
-            />
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:text="@string/ok_btn"
+            android:textColor="@color/white" />
 
 
 </RelativeLayout>

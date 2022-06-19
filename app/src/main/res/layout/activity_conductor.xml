@@ -10,28 +10,27 @@
         tools:context=".ConductorActivity">
 
 
-
     <TextView
             android:id="@+id/recordBtn"
-            android:background="@color/purple_500"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
-            android:text="@string/record_btn"
+            android:background="@color/teal_200"
             android:padding="10dp"
+            android:text="@string/record_btn"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="20dp" />
 
     <TextView
             android:id="@+id/stopBtn"
-            android:background="@color/purple_500"
+            android:background="@color/teal_200"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/recordBtn"
             android:text="@string/stop_btn"
             android:padding="10dp"
             android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textSize="20dp" />
 
 
     <RelativeLayout
@@ -46,15 +45,15 @@
 
         <ImageView
                 android:id="@+id/red_IV"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:src="@drawable/red_btn_animation"
                 android:gravity="center" />
 
         <ImageView
                 android:id="@+id/green_IV"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_toRightOf="@+id/red_IV"
                 android:src="@drawable/green_btn_animation" />
@@ -72,8 +71,8 @@
 
         <ImageView
                 android:id="@+id/blue_IV"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
@@ -81,8 +80,8 @@
 
         <ImageView
                 android:id="@+id/yellow_IV"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
                 android:layout_centerHorizontal="true"
                 android:layout_toRightOf="@+id/blue_IV"
                 android:src="@drawable/yellow_btn_animation" />
