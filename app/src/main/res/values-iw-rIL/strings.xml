@@ -32,7 +32,7 @@
     <string name="simon_continues_to_add_a_step_with_each_new_level_you_reach_so_don_t_forget_the_sequence">סיימון ממשיך להוסיף צעד בכל שלב חדש שנפתח אז אל תשכחו את הסדר.</string>
     <string name="you_can_also_record_your_own_sequences_using_the_conductor">אתה יכול גם להקליט רצפים משלך בעזרת המנצח.</string>
     <string name="try_beating_your_last_highscore_to_win_rewards">נסה לשבור את הניקוד הגבוה שלך ולזכות בפרסים.</string>
-    <string name="Copy_the_button_simon_pressed">חזור אחרי מה שסיימון לחץ.</string>
+    <string name="Copy_the_button_simon_pressed">לחץ התחל וחזור אחרי מה שסיימון לחץ</string>
     <string name="Good_Job_Simon_will_now_add_another_button">עבודה טובה! סיימון עכשיו יוסיף עוד כפתור לרצף.</string>
     <string name="you_are_getting_the_point">"אתה מתחיל להבין את זה! "</string>
     <string name="that_not_what_simon_pressed">זה לא מה שסיימון לחץ. נסה שוב.</string>
