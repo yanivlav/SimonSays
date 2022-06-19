@@ -149,6 +149,9 @@
     <string name="Recall_what_Simon_did">Recall what Simon did. Try Again.</string>
     <string name="your_turn">Your Turn</string>
     <string name="simons_turn">Simon\'s Turn</string>
+    <string name="current_score">Current Score</string>
+    <string name="best_score">Best Score:</string>
+    <string name="hit_start_to_begin">Hit Start to Begin</string>
 
 
 </resources>

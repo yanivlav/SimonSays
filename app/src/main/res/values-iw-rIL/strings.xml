@@ -42,4 +42,7 @@
     <string name="Recall_what_Simon_did">נסה להיזכר במה שסיימון אמר. נסה שוב.</string>
     <string name="your_turn">תורך</string>
     <string name="simons_turn">התור של סיימון</string>
+    <string name="current_score">ניקוד נוכחי</string>
+    <string name="best_score">ניקוד הכי גבוה</string>
+    <string name="hit_start_to_begin">לחץ על התחל כדי להתחיל</string>
 </resources>

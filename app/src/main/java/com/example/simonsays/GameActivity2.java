@@ -183,7 +183,7 @@ public class GameActivity2 extends AppCompatActivity{
         highscore++;
 
         TextView scorebox = (TextView) findViewById(R.id.Scorebox);
-        scorebox.setText("Current Score: " + (highscore-1));
+        scorebox.setText(getString(R.string.current_score) + (highscore-1));
     }
 
     public void gameover(){
@@ -191,11 +191,11 @@ public class GameActivity2 extends AppCompatActivity{
         if (!tutorialmode){
 
             SharedPreferences.Editor editor = spscore.edit();
-            if (!spscore.contains("bestScore")) {
-                editor.putInt("bestScore", (highscore - 1));
+            if (!spscore.contains(getString(R.string.best_score))) {
+                editor.putInt(getString(R.string.best_score), (highscore - 1));
             }
             else if(spscore.getInt("bestScore",-1) < highscore-1){
-                editor.putInt("bestScore", (highscore - 1));
+                editor.putInt(getString(R.string.best_score), (highscore - 1));
             }
             editor.commit();
 
@@ -217,9 +217,9 @@ public class GameActivity2 extends AppCompatActivity{
 
         findViewById(R.id.start_btn).setEnabled(true);
         TextView info = (TextView) findViewById(R.id.info);
-        info.setText("Hit Start to Begin");
+        info.setText(R.string.hit_start_to_begin);
         TextView scorebox = (TextView) findViewById(R.id.Scorebox);
-        scorebox.setText("Current Score: ");
+        scorebox.setText(R.string.current_score);
     }
 
     public void Simonsays(View view){
