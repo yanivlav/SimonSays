@@ -75,7 +75,7 @@ public class GameActivity2 extends AppCompatActivity{
         }
 
 
-//        Button simonbutton = (Button) findViewById(R.id.Simon);
+//        Button simonbutton =  (Button) findViewById(R.id.start_btn);
 //        simonbutton.performClick();
         simonbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +94,7 @@ public class GameActivity2 extends AppCompatActivity{
 
     public void lightupred(){
         redIV.setEnabled(false);
+//        Toast.makeText(getApplicationContext(), userRedBtnSE, Toast.LENGTH_LONG).show();
         ImpRunn impR = new ImpRunn(userRedBtnSE);
         Thread th=new Thread(impR);
         th.start();
@@ -126,7 +127,7 @@ public class GameActivity2 extends AppCompatActivity{
     }
 
     public void allthelights(){
-        new CountDownTimer( (((1400/s)+1000/s)*(currentlevel+2)), ((1400/s)+1000/s) ){
+        new CountDownTimer( (((800/s)+800/s)*(currentlevel+2)), ((800/s)+800/s) ){
             public void onTick(long millis){
                 if (firstdelay){
                     firstdelay = false;
@@ -183,15 +184,19 @@ public class GameActivity2 extends AppCompatActivity{
     }
 
     public void gameover(){
+
         if (!tutorialmode){
+
             SharedPreferences.Editor editor = spscore.edit();
-        if (spscore.getInt("bestScore",0)>highscore-1)
-            editor.putInt("bestScore", (highscore - 1));
-            editor.putInt("lastScore", highscore-1);
+            if (!spscore.contains("bestScore")) {
+                editor.putInt("bestScore", (highscore - 1));
+            }
+            else if(spscore.getInt("bestScore",-1) < highscore-1){
+                editor.putInt("bestScore", (highscore - 1));
+            }
             editor.commit();
 
-            Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1),
-                    Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1), Toast.LENGTH_SHORT).show();
         }
         tutorialmode = false;
         inputcount = 0;
@@ -330,11 +335,6 @@ public class GameActivity2 extends AppCompatActivity{
 
     }
 
-    private void playBtnSound(String fileName){
-        MediaPlayer mPlayer = MediaPlayer.create(GameActivity2.this, getResources().getIdentifier(fileName, "raw", getPackageName()));
-        mPlayer.start();
-    }
-
     private void buttonAnimation(ImageView color) {
         AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
         animationDrawable.start();
@@ -345,10 +345,14 @@ public class GameActivity2 extends AppCompatActivity{
                 animationDrawable.setVisible(true,true);
                 color.setEnabled(true);
             }
-        }, 1400);
+        }, 400);
 
     }
 
+    private void playBtnSound(String fileName){
+        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
+        mPlayer.start();
+    }
 
     class ImpRunn implements Runnable {
         String userBtnSE;
@@ -359,24 +363,11 @@ public class GameActivity2 extends AppCompatActivity{
         }
         @Override
         public void run() {
-            playBtnSound(userBtnSE);
+            if (userBtnSE.isEmpty())
+                playBtnSound("boy_says_volcano");
+            else
+                playBtnSound(userBtnSE);
         }
     }
-
-//    @Override
-//    protected void onPause() {
-//        super.onPause();
-//        SharedPreferences.Editor editor = spscore.edit();
-////        if (spscore.getInt("bestScore",0)>highscore-1) {
-//            editor.putInt("bestScore", (highscore - 1));
-//            Toast.makeText(getApplicationContext(), highscore, Toast.LENGTH_LONG).show();
-//
-////        }
-//        editor.putInt("lastScore", highscore-1);
-//        editor.commit();
-//        Toast.makeText(getApplicationContext(),spscore.getInt("bestScore",0), Toast.LENGTH_LONG).show();
-//    }
-
-
 }
 

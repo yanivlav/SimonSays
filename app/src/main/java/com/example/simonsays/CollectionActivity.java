@@ -1,14 +1,11 @@
 package com.example.simonsays;
 
-import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class CollectionActivity extends AppCompatActivity {
@@ -16,15 +13,15 @@ public class CollectionActivity extends AppCompatActivity {
     ImageView monky1, monky2, monky3, monky4, monky5, monky6, monky7, monky8, monky9, monky10;
     TextView lavel1, level2, lavel3, level4, lavel5, level6, lavel7, level8, lavel9, level10;
     EditText bestScoreET;
+    SharedPreferences spscore;
 
-    @SuppressLint("SetTextI18n")
-    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
+        int bestScore=0;
 //        int score = getIntent().getIntExtra("game_score",-1);
 
         monky1 = findViewById(R.id.monky_level_1);
@@ -51,26 +48,29 @@ public class CollectionActivity extends AppCompatActivity {
 
         bestScoreET = findViewById(R.id.best_score);
 
+        spscore = getSharedPreferences("scoreFile", 0);
+        SharedPreferences.Editor editor = spscore.edit();
+        if (!spscore.contains("bestScore"))
+            editor.putInt("bestScore",0).commit();
 
-        SharedPreferences spscore = getSharedPreferences("scoreFile", 0);
-//        Toast.makeText(getApplicationContext(),(spscore.getInt("bestScore", 0)), Toast.LENGTH_LONG).show();
+        if (spscore.contains("bestScore"))
+            bestScore = spscore.getInt("bestScore",0);
 
-        int bestScore = spscore.getInt("bestScore",0);
         bestScoreET.setText(bestScore+"");
+//
 
-//        int bestScore = 3;
 
 
-        if (bestScore >  2) monky1.setImageResource(R.drawable.monky_level_1);
-        if (bestScore >  9) monky1.setImageResource(R.drawable.monky_level_2);
-        if (bestScore >  19) monky1.setImageResource(R.drawable.monky_level_3);
-        if (bestScore >  49) monky1.setImageResource(R.drawable.monky_level_4);
-        if (bestScore >  74) monky1.setImageResource(R.drawable.monky_level_5);
-        if (bestScore >  99) monky1.setImageResource(R.drawable.monky_level_6);
-        if (bestScore >  119) monky1.setImageResource(R.drawable.monky_level_7);
-        if (bestScore >  149) monky1.setImageResource(R.drawable.monky_level_8);
-        if (bestScore >  175) monky1.setImageResource(R.drawable.monky_level_9);
-        if (bestScore >  199) monky1.setImageResource(R.drawable.monky_level_10);
+        if (bestScore >  1) monky1.setImageResource(R.drawable.monky_level_1);
+        if (bestScore >  3) monky2.setImageResource(R.drawable.monky_level_2);
+        if (bestScore >  7) monky3.setImageResource(R.drawable.monky_level_3);
+        if (bestScore >  12) monky4.setImageResource(R.drawable.monky_level_4);
+        if (bestScore >  15) monky5.setImageResource(R.drawable.monky_level_5);
+        if (bestScore >  18) monky6.setImageResource(R.drawable.monky_level_6);
+        if (bestScore >  25) monky7.setImageResource(R.drawable.monky_level_7);
+        if (bestScore >  43) monky8.setImageResource(R.drawable.monky_level_8);
+        if (bestScore >  50) monky9.setImageResource(R.drawable.monky_level_9);
+        if (bestScore >  60) monky10.setImageResource(R.drawable.monky_level_10);
 
     }
 }

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     Button share;
     ImageView imageView;
 
-    Button next_Activity_button, conductorBtn, collectionBtn;
+    Button next_Activity_button, conductorBtn, collectionBtn, instructiobnBtn;
     String userRedBtnSE, userBlueBtnSE, userGreenBtnSE, userYellowBtnSE;
     String userNickname, UserSoundchise, userDiff;
     public static final int SETTINGS_REQUEST = 1;
@@ -38,8 +38,16 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        share = findViewById(R.id.share_button);
         imageView = findViewById(R.id.home_page2);
+
+        instructiobnBtn = findViewById(R.id.instructions_button);
+        instructiobnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, InstuctionsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         collectionBtn = findViewById(R.id.collection_activity_button);
         collectionBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,13 +60,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
 //        int score = getIntent().getIntExtra("game_score",-1);
 
-        // initialising text field where we will enter data
+        share = findViewById(R.id.share_button);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Now share image function will be called
-                // here we  will be passing the text to share
-                // Getting drawable value from image
                 BitmapDrawable bitmapDrawable = (BitmapDrawable) imageView.getDrawable();
                 Bitmap bitmap = bitmapDrawable.getBitmap();
                 shareImageandText(bitmap);
