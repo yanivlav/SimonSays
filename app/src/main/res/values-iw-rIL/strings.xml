@@ -40,4 +40,6 @@
     <string name="you_lose">הפסדת</string>
     <string name="completed_toturial">יפה! סיימת את ההדרכה בהצלחה! לחץ התחל כדי לשחק.</string>
     <string name="Recall_what_Simon_did">נסה להיזכר במה שסיימון אמר. נסה שוב.</string>
+    <string name="your_turn">תורך</string>
+    <string name="simons_turn">התור של סיימון</string>
 </resources>

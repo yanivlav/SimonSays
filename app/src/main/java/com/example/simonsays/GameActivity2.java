@@ -158,7 +158,7 @@ public class GameActivity2 extends AppCompatActivity{
                 greenIV.setEnabled(true);
                 yellowIV.setEnabled(true);
                 TextView info = (TextView) findViewById(R.id.info);
-                info.setText("Your Turn");
+                info.setText(R.string.your_turn);
             }
         }.start();
     }
@@ -170,7 +170,7 @@ public class GameActivity2 extends AppCompatActivity{
         currentlevel++;
         count = 0;
         TextView info = (TextView) findViewById(R.id.info);
-        info.setText("Simon's Turn");
+        info.setText(R.string.simons_turn);
         redIV.setEnabled(false);
         blueIV.setEnabled(false);
         greenIV.setEnabled(false);
@@ -208,7 +208,7 @@ public class GameActivity2 extends AppCompatActivity{
 
         findViewById(R.id.start_btn).setEnabled(true);
         TextView info = (TextView) findViewById(R.id.info);
-        info.setText("Hit Simon to Begin");
+        info.setText("Hit Start to Begin");
         TextView scorebox = (TextView) findViewById(R.id.Scorebox);
         scorebox.setText("Current Score: ");
     }
