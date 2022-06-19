@@ -70,7 +70,7 @@ public class GameActivity2 extends AppCompatActivity{
             correctInput[1] = 3;//blue
             correctInput[2] = 1;//red
             correctInput[3] = 4;//yellow
-            Toast.makeText(getApplicationContext(), "Copy the button simon pressed.",
+            Toast.makeText(getApplicationContext(), R.string.Copy_the_button_simon_pressed,
                     Toast.LENGTH_LONG).show();
         }
 
@@ -229,12 +229,12 @@ public class GameActivity2 extends AppCompatActivity{
                     inputcount++;
                     if (inputcount == currentlevel){
                         if (tutorialmode && tutorialcount == 0){
-                            Toast.makeText(getApplicationContext(), "Good Job! Simon will now add another button to the sequnce.",
+                            Toast.makeText(getApplicationContext(), R.string.Good_Job_Simon_will_now_add_another_button,
                                     Toast.LENGTH_LONG).show();
                             tutorialcount++;
                         }
                         if (tutorialmode && tutorialcount == 2){
-                            Toast.makeText(getApplicationContext(), "You're getting the hang of it!",
+                            Toast.makeText(getApplicationContext(), R.string.you_are_getting_the_point,
                                     Toast.LENGTH_LONG).show();
                         }
                         levelup();
@@ -242,10 +242,10 @@ public class GameActivity2 extends AppCompatActivity{
                 }
                 else {
                     if (tutorialmode){
-                        Toast.makeText(getApplicationContext(), "That is not what Simon pressed. Try Again.",
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
                                 Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "you lose",
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
                                 Toast.LENGTH_LONG).show();
                         gameover();
                     }
@@ -259,7 +259,7 @@ public class GameActivity2 extends AppCompatActivity{
                     inputcount++;
                     if (inputcount == currentlevel){
                         if (tutorialmode){
-                            Toast.makeText(getApplicationContext(), "Nice Job!",
+                            Toast.makeText(getApplicationContext(), R.string.nice_job,
                                     Toast.LENGTH_LONG).show();
                             tutorialcount++;
                         }
@@ -268,10 +268,10 @@ public class GameActivity2 extends AppCompatActivity{
                 }
                 else {
                     if (tutorialmode){
-                        Toast.makeText(getApplicationContext(), "That is not what Simon pressed. Try Again.",
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
                                 Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "you lose",
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
                                 Toast.LENGTH_LONG).show();
                         gameover();
                     }
@@ -285,7 +285,7 @@ public class GameActivity2 extends AppCompatActivity{
                     inputcount++;
                     if (inputcount == currentlevel){
                         if (tutorialmode){
-                            Toast.makeText(getApplicationContext(), "Nice! You've completed the tutorial! Hit start to play.",
+                            Toast.makeText(getApplicationContext(), R.string.completed_toturial,
                                     Toast.LENGTH_LONG).show();
                             gameover();
                         } else {
@@ -295,10 +295,10 @@ public class GameActivity2 extends AppCompatActivity{
                 }
                 else {
                     if (tutorialmode){
-                        Toast.makeText(getApplicationContext(), "That is not what Simon pressed. Try Again.",
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
                                 Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(getApplicationContext(), "you lose",
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
                                 Toast.LENGTH_LONG).show();
                         gameover();
                     }
@@ -309,7 +309,7 @@ public class GameActivity2 extends AppCompatActivity{
         greenIV.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 if (tutorialmode){
-                    Toast.makeText(getApplicationContext(), "Recall what Simon did. Try Again.",
+                    Toast.makeText(getApplicationContext(), R.string.Recall_what_Simon_did,
                             Toast.LENGTH_LONG).show();
                 } else {
 
