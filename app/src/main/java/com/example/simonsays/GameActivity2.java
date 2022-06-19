@@ -285,7 +285,7 @@ public class GameActivity2 extends AppCompatActivity{
                     inputcount++;
                     if (inputcount == currentlevel){
                         if (tutorialmode){
-                            Toast.makeText(getApplicationContext(), "Nice! You've completed the tutorial! Hit simon to play.",
+                            Toast.makeText(getApplicationContext(), "Nice! You've completed the tutorial! Hit start to play.",
                                     Toast.LENGTH_LONG).show();
                             gameover();
                         } else {

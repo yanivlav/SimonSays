@@ -31,11 +31,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Start"/>
-    <Button
-            android:id="@+id/restart_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="reStart"/>
+<!--    <Button-->
+<!--            android:id="@+id/restart_btn"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="reStart"/>-->
 
 
     <ImageView
