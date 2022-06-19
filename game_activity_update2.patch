@@ -1,0 +1,21 @@
+Index: app/src/main/java/com/example/simonsays/GameActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/simonsays/GameActivity.java b/app/src/main/java/com/example/simonsays/GameActivity.java
+--- a/app/src/main/java/com/example/simonsays/GameActivity.java	(revision 41572af29eb1476e2c11a76017e5e1a6d88b9d92)
++++ b/app/src/main/java/com/example/simonsays/GameActivity.java	(revision cb2dbef683f77289cc556ee94f413648a6fdf120)
+@@ -22,9 +22,9 @@
+     private int AIe;
+     private int highScore;
+     private int chain;
+-    ArrayList<Integer> AI;
+-    ArrayList<Integer> sequence;
+-    ArrayList<Integer> playerAnswers;
++    private ArrayList<Integer> AI;
++    private ArrayList<Integer> sequence;
++    private ArrayList<Integer> playerAnswers;
+ 
+ 
+ 
