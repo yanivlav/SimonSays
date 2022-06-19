@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import androidx.appcompat.app.AlertDialog;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -61,15 +60,15 @@ public class GameActivity extends AppCompatActivity {
         restartBtn = findViewById(R.id.restart_btn);
         homeBtn = findViewById(R.id.home_btn);
 
-//        homeBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(GameActivity.this,MainActivity.class);
-//                intent.putExtra("game_score", score);
-//                startActivity(intent);
-//            }
-//        });
-//
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+                intent.putExtra("game_score", score);
+                startActivity(intent);
+            }
+        });
+
 
 
         restartBtn.setOnClickListener(new View.OnClickListener() {

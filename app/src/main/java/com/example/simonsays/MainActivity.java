@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -22,11 +23,10 @@ import java.io.FileOutputStream;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener  {
 
-    Button share;
-    ImageView imageView;
 
-    Button next_Activity_button, conductorBtn, collectionBtn, instructiobnBtn;
-    String userRedBtnSE, userBlueBtnSE, userGreenBtnSE, userYellowBtnSE;
+    ImageView imageView;
+    EditText lastscoreET;
+    Button next_Activity_button, conductorBtn, collectionBtn, instructiobnBtn, share;
     String userNickname, UserSoundchise, userDiff;
     public static final int SETTINGS_REQUEST = 1;
     public static final int INSTRUCTIONS_REQUEST = 1;
@@ -39,6 +39,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.home_page2);
+        lastscoreET = findViewById(R.id.lastScoreET);
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null)
+            lastscoreET.setText(extras.getInt("last_score"));
+//        else
+//            lastscoreET.setText("0");
+
 
         instructiobnBtn = findViewById(R.id.instructions_button);
         instructiobnBtn.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             }
         });
 
+//        Intent intent = new Intent(getApplicationContext(), Second_activity.class);
 //        int score = getIntent().getIntExtra("game_score",-1);
 
         share = findViewById(R.id.share_button);
@@ -101,12 +109,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
             startActivityForResult(new Intent(this, SettingsActivity.class), SETTINGS_REQUEST);
         }
-//        else if(item.getItemId() == R.id.action_instructions)
-//        {
-////            startActivityForResult(new Intent(this, SettingsActivity.class), INSTRUCTIONS_REQUEST);
-////            GameActivity2.tutorialmode = true;
-////            startActivityForResult(new Intent(this, GameActivity2.class), SETTINGS_REQUEST);
-//        }
         return super.onOptionsItemSelected(item);
     }
 

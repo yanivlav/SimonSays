@@ -22,7 +22,7 @@ public class GameActivity2 extends AppCompatActivity{
 
     public static int s = 3, l = 1;
     public static boolean tutorialmode = false;
-    int score = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0;
+    int lastScore = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0;
     int [] correctInput = new int[500];
     boolean firstdelay = true;
     Random generator = new Random();
@@ -45,6 +45,8 @@ public class GameActivity2 extends AppCompatActivity{
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
+        userDiff = sp.getString("difficulty_listPreference", "");
+        s = Integer.parseInt(userDiff);
 
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
@@ -58,7 +60,7 @@ public class GameActivity2 extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameActivity2.this,MainActivity.class);
-//                intent.putExtra("game_score", score);
+                intent.putExtra("last_score", lastScore);
                 startActivity(intent);
             }
         });
@@ -154,12 +156,13 @@ public class GameActivity2 extends AppCompatActivity{
                 count = 0;
                 inputcount = 0;
                 firstdelay = true;
+                TextView info = (TextView) findViewById(R.id.info);
+                info.setText(R.string.your_turn);
                 redIV.setEnabled(true);
                 blueIV.setEnabled(true);
                 greenIV.setEnabled(true);
                 yellowIV.setEnabled(true);
-                TextView info = (TextView) findViewById(R.id.info);
-                info.setText(R.string.your_turn);
+
             }
         }.start();
     }
@@ -197,6 +200,7 @@ public class GameActivity2 extends AppCompatActivity{
             editor.commit();
 
             Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1), Toast.LENGTH_SHORT).show();
+            lastScore = highscore -1;
         }
         tutorialmode = false;
         inputcount = 0;
@@ -235,12 +239,12 @@ public class GameActivity2 extends AppCompatActivity{
                     if (inputcount == currentlevel){
                         if (tutorialmode && tutorialcount == 0){
                             Toast.makeText(getApplicationContext(), R.string.Good_Job_Simon_will_now_add_another_button,
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                             tutorialcount++;
                         }
                         if (tutorialmode && tutorialcount == 2){
                             Toast.makeText(getApplicationContext(), R.string.you_are_getting_the_point,
-                                    Toast.LENGTH_LONG).show();
+                                    Toast.LENGTH_SHORT).show();
                         }
                         levelup();
                     }
@@ -248,10 +252,10 @@ public class GameActivity2 extends AppCompatActivity{
                 else {
                     if (tutorialmode){
                         Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getApplicationContext(), R.string.you_lose,
-                                Toast.LENGTH_LONG).show();
+                                Toast.LENGTH_SHORT).show();
                         gameover();
                     }
                 }
@@ -345,7 +349,7 @@ public class GameActivity2 extends AppCompatActivity{
                 animationDrawable.setVisible(true,true);
                 color.setEnabled(true);
             }
-        }, 400);
+        }, 350);
 
     }
 
