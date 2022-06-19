@@ -12,5 +12,6 @@
     <string name="stop_btn">סיים</string>
     <string name="save_btn">שמור</string>
     <string name="settings">הגדרות</string>
-    <string name="instructions">איך לשחק?</string>
+    <string name="share">שיתוף</string>
+    <string name="instructions_btn">איך לשחק?</string>
 </resources>
