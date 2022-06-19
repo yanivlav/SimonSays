@@ -5,311 +5,317 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
+public class GameActivity extends AppCompatActivity{
 
-public class GameActivity extends AppCompatActivity {
-    private int roundNumber;
-    private int AIe;
-    private int highScore;
-    private int chain;
-    private int score, best_score;
-    ArrayList<Integer> AI;
-    ArrayList<Integer> sequence;
-    ArrayList<Integer> playerAnswers;
-    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
-
-
-    //    Button recBtn, stopBtn;
+    public static int s = 3, l = 1;
+    public static boolean tutorialmode = false;
+    int lastScore = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0, userDiff;
+    int [] correctInput = new int[500];
+    boolean firstdelay = true;
+    Random generator = new Random();
     ImageView blueIV, redIV, greenIV, yellowIV;
-    Button startBtn,restartBtn, homeBtn;
-
-    private MediaPlayer mPlayer;
+    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise;
+    Button homeBtn,simonbutton;
     SharedPreferences spscore;
+    TextView info;
+    TextView scorebox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-//        sound effects from Preferences
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        //sound effects from Preferences
+        spscore = getSharedPreferences("scoreFile",MODE_PRIVATE);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(GameActivity.this);
         userRedBtnSE = sp.getString("red_listPreference", "");
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
-
-        spscore= getSharedPreferences("scoreFile", MODE_PRIVATE);
-
+        userDiff = sp.getInt("difficulty_listPreference",1);
+        s = userDiff;
 
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
-        startBtn = findViewById(R.id.start_btn);
-        restartBtn = findViewById(R.id.restart_btn);
-        homeBtn = findViewById(R.id.home_btn);
+        info = findViewById(R.id.info);
+        scorebox = findViewById(R.id.Scorebox);
 
+        homeBtn = findViewById(R.id.home_btn);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                intent.putExtra("game_score", score);
+                intent.putExtra("last_score", lastScore);
                 startActivity(intent);
             }
         });
 
+        if (tutorialmode){
+            l = 1;
+            currentlevel = 0;
+            correctInput[0] = 1;//red
+            correctInput[1] = 3;//blue
+            correctInput[2] = 1;//red
+            correctInput[3] = 4;//yellow
+            Toast.makeText(getApplicationContext(), R.string.Copy_the_button_simon_pressed,
+                    Toast.LENGTH_LONG).show();
+        }
 
-
-        restartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(GameActivity.this,GameActivity.class);
-                startActivity(intent);
-            }
-        });
-        startBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                AIe = 0;
-                highScore = 20;
-                chain = 0;
-                roundNumber = 1;
-                AI = new ArrayList<>();
-                sequence = new ArrayList<>();
-                playerAnswers = new ArrayList<>();
-                // green = 0, red = 1, yellow = 2, blue = 3
-//                Toast.makeText(getApplicationContext(),"Game Started", Toast.LENGTH_SHORT).show();
-                flashSequence();
-
-            }
-        });
-
-
-        blueIV.setOnClickListener(new View.OnClickListener() {
+        simonbutton = findViewById(R.id.start_btn);
+        simonbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flashBlue(0);
-                playerAnswers.add(3);
-                checkAnswer();
-
-            }
-        });
-
-        redIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flashRed(0);
-                playerAnswers.add(1);
-                checkAnswer();
-            }
-        });
-
-        greenIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flashGreen(0);
-                playerAnswers.add(0);
-                checkAnswer();
-            }
-        });
-
-        yellowIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                flashYellow(0);
-                playerAnswers.add(2);
-                checkAnswer();
+                Simonsays(view);
             }
         });
     }
 
-
-    private void flashSequence() {
-        List<Integer> playerAnswers = new ArrayList<>();
-        Random rand = new Random();
-        sequence.add(rand.nextInt(3));
-        for (int i = 0; i < roundNumber; i++) {
-            int currentLight = sequence.get(i);
-            AI = sequence;
-
-            //should activate a flash for button by numbers finish the functions
-            if(currentLight == 0) {
-//                wait1(500);
-                flashGreen(1);
-//                Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
-            }
-            if(currentLight == 1) {
-//                wait1(500);
-                flashRed(1);
-//                Toast.makeText(getApplicationContext(),"simon says red", Toast.LENGTH_SHORT).show();
-            }
-            if(currentLight == 2) {
-//                wait1(500);
-                flashYellow(1);
-//                Toast.makeText(getApplicationContext(),"simon says yellow", Toast.LENGTH_SHORT).show();
-            }
-            if(currentLight == 3) {
-//                wait1(500);
-                flashBlue(1);
-//                Toast.makeText(getApplicationContext(),"simon says green", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-    }
-
-    private void checkAnswer(){
-        // sequence [1, 2, 3, 0]
-        // playerAns [1, 2, 3, 0]
-        int currentAnswerIndex = playerAnswers.size() - 1;
-        int currentAnswer = playerAnswers.get(currentAnswerIndex);
-        if (currentAnswer != sequence.get(currentAnswerIndex)) {
-            gameOver();
-            score = 0;
-        } else if ((currentAnswerIndex == sequence.size() - 1)) //last answer
-        {
-            playerAnswers.clear();
-            roundNumber++;
-//            wait1(1500);
-            flashSequence();
-            chain = chain + 1;
-            score++;
-        }
-    }
-
-    private void Draw() {//run again
-        if (sequence == AI) {
-            flashSequence();
-            roundNumber++;
-//            wait(1000);
-            flashSequence();
-            chain = chain + 1;
-        }
-    }
-
-    private void gameOver(){
-//        setText("newHs", "");
-//        setScreen("gameOver");
-//        setText("score", chain);
-//        if (chain > highScore) {
-//            highScore = chain;
-//            setText("newHs", "New");
-//        }
-//        wait(50);
-//        setText("highScore", highScore);
-//        wait(2000);
-        Toast.makeText(getApplicationContext(),"Game Over", Toast.LENGTH_SHORT).show();
-
-
-    }
-
-
-    private void flashGreen(int sender){
-
-        if (sender == 1)
-            greenIV.setEnabled(false);
-        buttonAnimation(greenIV);
-        if (userGreenBtnSE.isEmpty()) {
-            playBtnSound("boy_says_volcano");
-//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-        }
-        else
-            playBtnSound(userGreenBtnSE);
-            greenIV.setEnabled(true);
-
-//        if (sender == 1) wait1(1000);
-//            greenIV.setEnabled(true);
-
-    }
-
-    private  void flashRed(int sender){
-
-        if (sender == 1)
-            redIV.setEnabled(false);
+    public void lightupred(){
+        redIV.setEnabled(false);
+        ImpRunn impR = new ImpRunn(userRedBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
         buttonAnimation(redIV);
-        if (userRedBtnSE.isEmpty()) {
-            playBtnSound("boy_says_volcano");
-//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-        }
-        else
-            playBtnSound(userRedBtnSE);
-            redIV.setEnabled(true);
-//        if (sender == 1) wait1(1000);
-//            redIV.setEnabled(true);
-
-
-
     }
 
-    private void flashYellow(int sender){
-        if (sender == 1)
-            yellowIV.setEnabled(false);
+    public void lightupyellow(){
+        yellowIV.setEnabled(false);
+        ImpRunn impR = new ImpRunn(userYellowBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
         buttonAnimation(yellowIV);
-        if (userYellowBtnSE.isEmpty()) {
-            playBtnSound("boy_says_volcano");
-//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-        }
-        else
-            playBtnSound(userYellowBtnSE);
-            yellowIV.setEnabled(true);
-
-
-//        if (sender == 1) wait1(1000);
-//            yellowIV.setEnabled(true);
     }
 
-    private void flashBlue(int sender){
-        if (sender == 1)
-            blueIV.setEnabled(false);
+    public void lightupgreen(){
+        greenIV.setEnabled(false);
+        ImpRunn impR = new ImpRunn(userGreenBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(greenIV);
+    }
+
+    public void lightupblue(){
+        blueIV.setEnabled(false);
+        ImpRunn impR = new ImpRunn(userBlueBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
         buttonAnimation(blueIV);
-        if (userBlueBtnSE.isEmpty()) {
-            playBtnSound("boy_says_volcano");
-//            Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
-        }
-        else
-            playBtnSound(userBlueBtnSE);
-            blueIV.setEnabled(true);
-
-
-//        if (sender == 1) wait1(1000);
-
-//            blueIV.setEnabled(true);
     }
 
-//    private void wait(int ms){
-//
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-////                flashSequence();
-//            }
-//        }, 1000);//
-//
-//    }
-//
-    private void wait1(int ms){
+    public void allthelights(){
+        new CountDownTimer( (((800/s)+800/s)*(currentlevel+2)), ((800/s)+800/s) ){
+            public void onTick(long millis){
+                if (firstdelay){
+                    firstdelay = false;
+                }
+                else if(correctInput[count] == 1){
+                    lightupred();
+                    count++;
+                }
+                else if(correctInput[count] == 2) {
+                    lightupgreen();
+                    count++;
+                }
+                else if(correctInput[count] == 3) {
+                    lightupblue();
+                    count++;
+                }
+                else if(correctInput[count] == 4) {
+                    lightupyellow();
+                    count++;
+                }
+            }
 
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+            public void onFinish(){
+                count = 0;
+                inputcount = 0;
+                firstdelay = true;
+                info.setText(R.string.your_turn);
+                redIV.setEnabled(true);
+                blueIV.setEnabled(true);
+                greenIV.setEnabled(true);
+                yellowIV.setEnabled(true);
+            }
+        }.start();
     }
 
-    private void playBtnSound(String fileName){
-        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
-        mPlayer.start();
+    public void levelup(){
+        if (!tutorialmode){
+            correctInput[currentlevel] = generator.nextInt(4) +1;
+        }
+        currentlevel++;
+        count = 0;
+        info.setText(R.string.simons_turn);
+        redIV.setEnabled(false);
+        blueIV.setEnabled(false);
+        greenIV.setEnabled(false);
+        yellowIV.setEnabled(false);
+        allthelights();
+        highscore++;
+        scorebox.setText(getString(R.string.current_score) + (highscore-1));
+    }
+
+    public void gameover(){
+
+        if (!tutorialmode){
+            SharedPreferences.Editor editor = spscore.edit();
+            if (!spscore.contains(getString(R.string.best_score))) {
+                editor.putInt(getString(R.string.best_score), (highscore - 1));
+            }
+            else if(spscore.getInt("bestScore",-1) < highscore-1){
+                editor.putInt(getString(R.string.best_score), (highscore - 1));
+            }
+            editor.commit();
+
+            Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1), Toast.LENGTH_SHORT).show();
+            lastScore = highscore -1;
+        }
+        tutorialmode = false;
+        inputcount = 0;
+        for (int i = 0; i<currentlevel;i++){
+            correctInput[i] = 0;
+        }
+        currentlevel = l-1;
+        highscore = 0;
+
+        redIV.setEnabled(false);
+        blueIV.setEnabled(false);
+        greenIV.setEnabled(false);
+        yellowIV.setEnabled(false);
+
+        simonbutton.setEnabled(true);
+//        findViewById(R.id.start_btn).setEnabled(true); ----------------------------------- chack it out
+        info.setText(R.string.hit_start_to_begin);
+        scorebox.setText(R.string.current_score);
+    }
+
+    public void Simonsays(View view){
+        simonbutton.setEnabled(false);
+//        findViewById(R.id.start_btn).setEnabled(false); ----------------------------------- chack it out
+
+        for (int i=0; i< l-1; i++){
+            correctInput[i] = generator.nextInt(4) +1;
+        }
+        levelup();
+
+        redIV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (1 == correctInput[inputcount]){
+                    inputcount++;
+                    if (inputcount == currentlevel){
+                        if (tutorialmode && tutorialcount == 0){
+                            Toast.makeText(getApplicationContext(), R.string.Good_Job_Simon_will_now_add_another_button, Toast.LENGTH_SHORT).show();
+                            tutorialcount++;
+                        }
+                        if (tutorialmode && tutorialcount == 2){
+                            Toast.makeText(getApplicationContext(), R.string.you_are_getting_the_point,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        levelup();
+                    }
+                }
+                else {
+                    if (tutorialmode){
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
+                                Toast.LENGTH_SHORT).show();
+                        gameover();
+                    }
+                }
+            }
+        });
+
+        blueIV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (3 == correctInput[inputcount]){
+                    inputcount++;
+                    if (inputcount == currentlevel){
+                        if (tutorialmode){
+                            Toast.makeText(getApplicationContext(), R.string.nice_job,
+                                    Toast.LENGTH_SHORT).show();
+                            tutorialcount++;
+                        }
+                        levelup();
+                    }
+                }
+                else {
+                    if (tutorialmode){
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
+                                Toast.LENGTH_SHORT).show();
+                        gameover();
+                    }
+                }
+            }
+        });
+
+        yellowIV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (4 == correctInput[inputcount]){
+                    inputcount++;
+                    if (inputcount == currentlevel){
+                        if (tutorialmode){
+                            Toast.makeText(getApplicationContext(), R.string.completed_toturial,
+                                    Toast.LENGTH_SHORT).show();
+                            gameover();
+                        } else {
+                            levelup();
+                        }
+                    }
+                }
+                else {
+                    if (tutorialmode){
+                        Toast.makeText(getApplicationContext(), R.string.that_not_what_simon_pressed,
+                                Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), R.string.you_lose,
+                                Toast.LENGTH_SHORT).show();
+                        gameover();
+                    }
+                }
+            }
+        });
+
+        greenIV.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                if (tutorialmode){
+                    Toast.makeText(getApplicationContext(), R.string.Recall_what_Simon_did,
+                            Toast.LENGTH_SHORT).show();
+                } else {
+
+                    if (2 == correctInput[inputcount]){
+                        inputcount++;
+                        if (inputcount == currentlevel){
+                            levelup();
+                        }
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(), "you lose",
+                                Toast.LENGTH_SHORT).show();
+                        gameover();
+                    }
+                }
+            }
+        });
     }
 
     private void buttonAnimation(ImageView color) {
@@ -319,19 +325,31 @@ public class GameActivity extends AppCompatActivity {
             @Override
             public void run() {
                 animationDrawable.stop();
+                animationDrawable.setVisible(true,true);
+                color.setEnabled(true);
             }
-        }, 1000);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences.Editor editor = spscore.edit();
-        if (spscore.getInt("bestScore",-1)>spscore.getInt("lastScore",-1))
-            editor.putInt("bestScore", spscore.getInt("lastScore",-1));
-        editor.putInt("lastScore", score);
-        editor.commit();
+        }, 350);
 
     }
 
+    private void playBtnSound(String fileName){
+        MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));
+        mPlayer.start();
+    }
+
+    class ImpRunn implements Runnable {
+        String userBtnSE;
+
+        public ImpRunn(String ColorSE){
+            userBtnSE=ColorSE;
+
+        }
+        @Override
+        public void run() {
+            if (userBtnSE.isEmpty())
+                playBtnSound("boy_says_volcano");
+            else
+                playBtnSound(userBtnSE);
+        }
+    }
 }

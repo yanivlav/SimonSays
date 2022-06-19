@@ -22,8 +22,6 @@ public class CollectionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
         int bestScore=0;
-//        int score = getIntent().getIntExtra("game_score",-1);
-
         monky1 = findViewById(R.id.monky_level_1);
         monky2 = findViewById(R.id.monky_level_2);
         monky3 = findViewById(R.id.monky_level_3);
@@ -58,8 +56,6 @@ public class CollectionActivity extends AppCompatActivity {
 
         bestScoreET.setText(bestScore+"");
 //
-
-
 
         if (bestScore >  1) monky1.setImageResource(R.drawable.monky_level_1);
         if (bestScore >  3) monky2.setImageResource(R.drawable.monky_level_2);

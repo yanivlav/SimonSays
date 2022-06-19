@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,7 +27,6 @@ public class ConductorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conductor);
-        Toast.makeText(getApplicationContext(),"IM BACK", Toast.LENGTH_SHORT).show();
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         userRedBtnSE = sp.getString("red_listPreference", "");
@@ -41,13 +39,11 @@ public class ConductorActivity extends AppCompatActivity {
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
 
-
         blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userBlueBtnSE.isEmpty()) {
                     playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
                 }
                 else
                     playBtnSound(userBlueBtnSE);
@@ -55,48 +51,39 @@ public class ConductorActivity extends AppCompatActivity {
 
             }
         });
-
-
         redIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userRedBtnSE.isEmpty()) {
                     playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
                 }
                 else
                     playBtnSound(userRedBtnSE);
                 buttonAnimation(redIV);
             }
         });
-
-
         yellowIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userYellowBtnSE.isEmpty()) {
                     playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
                 }
                 else
                     playBtnSound(userYellowBtnSE);
                 buttonAnimation(yellowIV);
             }
         });
-
         greenIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (userGreenBtnSE.isEmpty()) {
                     playBtnSound("boy_says_volcano");
-                    Toast.makeText(getApplicationContext(),"defualt Sound chosen", Toast.LENGTH_SHORT).show();
                 }
                 else
                     playBtnSound(userGreenBtnSE);
                 buttonAnimation(greenIV);
             }
         });
-
     }
 
     private void buttonAnimation(ImageView color){
@@ -109,8 +96,6 @@ public class ConductorActivity extends AppCompatActivity {
             }
         }, 1000);
     }
-
-
 
     private void playBtnSound(String fileName){
         MediaPlayer mPlayer = MediaPlayer.create(this, getResources().getIdentifier(fileName, "raw", getPackageName()));

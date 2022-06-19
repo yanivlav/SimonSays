@@ -39,10 +39,13 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.home_page2);
-        lastscoreET = findViewById(R.id.lastScoreET);
-        Bundle extras = getIntent().getExtras();
-        if(extras!=null)
-            lastscoreET.setText(extras.getInt("last_score"));
+
+//        Intent intent = new Intent(getApplicationContext(), Second_activity.class);
+//        int score = getIntent().getIntExtra("game_score",-1);
+//        lastscoreET = findViewById(R.id.lastScoreET);
+//        Bundle extras = getIntent().getExtras();
+//        if(extras!=null)
+//            lastscoreET.setText(extras.getInt("last_score"));
 //        else
 //            lastscoreET.setText("0");
 
@@ -64,9 +67,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 startActivity(intent);
             }
         });
-
-//        Intent intent = new Intent(getApplicationContext(), Second_activity.class);
-//        int score = getIntent().getIntExtra("game_score",-1);
 
         share = findViewById(R.id.share_button);
         share.setOnClickListener(new View.OnClickListener() {
@@ -90,11 +90,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         next_Activity_button = (Button) findViewById(R.id.first_activity_button);
         next_Activity_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, GameActivity2.class);
+                Intent intent = new Intent(MainActivity.this, GameActivity.class);
                 startActivity(intent);
             }
         });
-
     }
 
     @Override
@@ -105,35 +104,22 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_settings) {
-
+        if (item.getItemId() == R.id.action_settings)
             startActivityForResult(new Intent(this, SettingsActivity.class), SETTINGS_REQUEST);
-        }
         return super.onOptionsItemSelected(item);
     }
-
 
     private void shareImageandText(Bitmap bitmap) {
         Uri uri = getmageToShare(bitmap);
         Intent intent = new Intent(Intent.ACTION_SEND);
 
-        // putting uri of image to be shared
         intent.putExtra(Intent.EXTRA_STREAM, uri);
-
-        // adding text to share
         intent.putExtra(Intent.EXTRA_TEXT, "Sharing Image");
-
-        // Add subject Here
         intent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-
-        // setting type to image
         intent.setType("image/jpg");
-
-        // calling startactivity() to share
         startActivity(Intent.createChooser(intent, "Share Via"));
     }
 
-    // Retrieving the url to share
     private Uri getmageToShare(Bitmap bitmap) {
         File imagefolder = new File(getCacheDir(), "images");
         Uri uri = null;

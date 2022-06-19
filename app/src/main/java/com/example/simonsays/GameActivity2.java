@@ -27,7 +27,8 @@ public class GameActivity2 extends AppCompatActivity{
     boolean firstdelay = true;
     Random generator = new Random();
     ImageView blueIV, redIV, greenIV, yellowIV;
-    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
+    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise;
+    int userDiff;
     Button homeBtn,simonbutton;
     SharedPreferences spscore;
 
@@ -45,8 +46,10 @@ public class GameActivity2 extends AppCompatActivity{
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
-        userDiff = sp.getString("difficulty_listPreference", "");
-        s = Integer.parseInt(userDiff);
+//        userDiff = sp.getString("difficulty_listPreference", "");
+        userDiff = sp.getInt("difficulty_listPreference",1);
+        s = userDiff;
+//        s = Integer.parseInt(userDiff);
 
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
@@ -374,4 +377,3 @@ public class GameActivity2 extends AppCompatActivity{
         }
     }
 }
-

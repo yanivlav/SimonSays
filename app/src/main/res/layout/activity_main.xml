@@ -132,10 +132,6 @@
             android:text="last score"
             android:textColor="@color/white"/>
 
-
-
-
-
 </RelativeLayout>
 
 
