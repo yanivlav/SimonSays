@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <TextView
+            android:id="@+id/tv_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SimonSays is a simple memory game!"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:paddingTop="20dp"/>
+
+    <TextView
+            android:id="@+id/tv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_1"
+            android:gravity="center"
+            android:paddingTop="50dp"
+            android:text="Listen to what Simon says. Repeat the sequence of the lights in the same order as Simon."
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    <TextView
+            android:id="@+id/tv3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv2"
+            android:gravity="center"
+            android:paddingTop="50dp"
+            android:text="Simon continues to add a step with each new level you reach so don't forget the sequence "
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
+    <Button
+            android:id="@+id/tutorial_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv3"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Tutorial"
+            />
+
+    <Button
+            android:id="@+id/ok_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tutorial_btn"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="ok"
+            />
+
+
+</RelativeLayout>

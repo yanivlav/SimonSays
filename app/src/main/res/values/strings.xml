@@ -118,6 +118,8 @@
     <string name="record_btn">Record</string>
     <string name="stop_btn">Stop</string>
     <string name="save_btn">Save</string>
+    <string name="settings">Settings</string>
+    <string name="instructions">Instructions</string>
 
 
 </resources>

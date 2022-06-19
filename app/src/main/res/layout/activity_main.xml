@@ -18,17 +18,19 @@
             android:textSize="50dp" />
 
     <TextView
-            android:text="@string/game_name_preview"
+            android:id="@+id/simon_title_mini"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:textColor="@color/white"
             android:layout_below="@id/simon_title"
-            android:id="@+id/simon_title_mini"
-            android:layout_margin="10dp"
-            android:textSize="10dp"
-            />
+            android:layout_centerInParent="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="@string/game_name_preview"
+            android:textColor="@color/white"
+            android:textSize="10dp" />
 
     <ImageView
             android:id="@+id/home_page2"
@@ -112,6 +114,26 @@
             android:textSize="20dp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
+
+    <com.sanojpunchihewa.glowbutton.GlowButton
+            android:id="@+id/instructions_button"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/share_button"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/transparent"
+            android:backgroundTint="@color/teal_200"
+            android:gravity="center"
+            android:padding="15dp"
+            android:text="instructions"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:pressedGlowSize="20dp" />
+
 
 
 

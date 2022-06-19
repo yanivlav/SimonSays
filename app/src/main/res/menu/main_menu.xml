@@ -5,11 +5,12 @@
     <item
             android:id="@+id/action_settings"
             android:icon="@drawable/settings_icon"
-            android:title="Settings" />
+            android:title="@string/settings" />
 
-    <item
-            android:icon="@drawable/green_btn"
-            android:title="Instructions" />
+<!--    <item-->
+<!--            android:id="@+id/action_instructions"-->
+<!--            android:icon="@drawable/ic_baseline_integration_instructions_24"-->
+<!--            android:title="@string/instructions" />-->
 
 </menu>
 

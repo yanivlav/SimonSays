@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     String userRedBtnSE, userBlueBtnSE, userGreenBtnSE, userYellowBtnSE;
     String userNickname, UserSoundchise, userDiff;
     public static final int SETTINGS_REQUEST = 1;
+    public static final int INSTRUCTIONS_REQUEST = 1;
+
 
 
     @Override
@@ -94,6 +96,12 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
             startActivityForResult(new Intent(this, SettingsActivity.class), SETTINGS_REQUEST);
         }
+//        else if(item.getItemId() == R.id.action_instructions)
+//        {
+////            startActivityForResult(new Intent(this, SettingsActivity.class), INSTRUCTIONS_REQUEST);
+////            GameActivity2.tutorialmode = true;
+////            startActivityForResult(new Intent(this, GameActivity2.class), SETTINGS_REQUEST);
+//        }
         return super.onOptionsItemSelected(item);
     }
 
