@@ -45,4 +45,6 @@
     <string name="current_score">ניקוד נוכחי</string>
     <string name="best_score">ניקוד הכי גבוה</string>
     <string name="hit_start_to_begin">לחץ על התחל כדי להתחיל</string>
+    <string name="start_restart">התחל \\ התחל מחדש</string>
+    <string name="home">בית</string>
 </resources>
