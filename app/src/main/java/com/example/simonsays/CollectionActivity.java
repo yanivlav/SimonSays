@@ -25,8 +25,7 @@ public class CollectionActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_collection);
-
-        int score = getIntent().getIntExtra("game_score",-1);
+//        int score = getIntent().getIntExtra("game_score",-1);
 
         monky1 = findViewById(R.id.monky_level_1);
         monky2 = findViewById(R.id.monky_level_2);
@@ -57,7 +56,9 @@ public class CollectionActivity extends AppCompatActivity {
 //        Toast.makeText(getApplicationContext(),(spscore.getInt("bestScore", 0)), Toast.LENGTH_LONG).show();
 
         int bestScore = spscore.getInt("bestScore",0);
-//        bestScoreET.setText(bestScore+"");
+        bestScoreET.setText(bestScore+"");
+
+//        int bestScore = 3;
 
 
         if (bestScore >  2) monky1.setImageResource(R.drawable.monky_level_1);

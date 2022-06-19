@@ -46,8 +46,6 @@ public class GameActivity2 extends AppCompatActivity{
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
 
-
-
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);
@@ -365,21 +363,19 @@ public class GameActivity2 extends AppCompatActivity{
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences.Editor editor = spscore.edit();
-//        if (spscore.getInt("bestScore",0)>highscore-1) {
-            editor.putInt("bestScore", (highscore - 1));
-            Toast.makeText(getApplicationContext(), highscore, Toast.LENGTH_LONG).show();
-
-//        }
-        editor.putInt("lastScore", highscore-1);
-        editor.commit();
-        Toast.makeText(getApplicationContext(),spscore.getInt("bestScore",0), Toast.LENGTH_LONG).show();
-
-
-    }
+//    @Override
+//    protected void onPause() {
+//        super.onPause();
+//        SharedPreferences.Editor editor = spscore.edit();
+////        if (spscore.getInt("bestScore",0)>highscore-1) {
+//            editor.putInt("bestScore", (highscore - 1));
+//            Toast.makeText(getApplicationContext(), highscore, Toast.LENGTH_LONG).show();
+//
+////        }
+//        editor.putInt("lastScore", highscore-1);
+//        editor.commit();
+//        Toast.makeText(getApplicationContext(),spscore.getInt("bestScore",0), Toast.LENGTH_LONG).show();
+//    }
 
 
 }
