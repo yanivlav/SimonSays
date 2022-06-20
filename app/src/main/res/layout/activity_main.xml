@@ -52,7 +52,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:layout_below="@id/lastScoreET"
+            android:layout_below="@id/simon_title_mini"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/teal_200"
             android:gravity="center"
@@ -123,14 +123,6 @@
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
-    <EditText
-            android:id="@+id/lastScoreET"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/simon_title_mini"
-            android:gravity="center"
-            android:text="last score"
-            android:textColor="@color/white"/>
 
 </RelativeLayout>
 

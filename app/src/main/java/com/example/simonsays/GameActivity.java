@@ -59,9 +59,10 @@ public class GameActivity extends AppCompatActivity{
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GameActivity.this,MainActivity.class);
-                intent.putExtra("last_score", lastScore);
-                startActivity(intent);
+//                Intent intent = new Intent(GameActivity.this,MainActivity.class);
+//                intent.putExtra("last_score", lastScore);
+//                startActivity(intent);
+                finish();
             }
         });
 
