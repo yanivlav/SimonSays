@@ -1,6 +1,5 @@
 package com.example.simonsays;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -22,12 +21,12 @@ public class GameActivity extends AppCompatActivity{
 
     public static int s = 3, l = 1;
     public static boolean tutorialmode = false;
-    int lastScore = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0, userDiff;
+    int lastScore = 0, count = 0, currentlevel= l-1, inputcount = 0, highscore = 0, tutorialcount = 0;
     int [] correctInput = new int[500];
     boolean firstdelay = true;
     Random generator = new Random();
     ImageView blueIV, redIV, greenIV, yellowIV;
-    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise;
+    String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE,userNickname, UserSoundchise, userDiff;
     Button homeBtn,simonbutton;
     SharedPreferences spscore;
     TextView info;
@@ -45,8 +44,8 @@ public class GameActivity extends AppCompatActivity{
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
-        userDiff = sp.getInt("difficulty_listPreference",1);
-        s = userDiff;
+        userDiff = sp.getString("difficulty_listPreference", "3");
+        s = Integer.parseInt(userDiff);
 
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
@@ -168,18 +167,19 @@ public class GameActivity extends AppCompatActivity{
         yellowIV.setEnabled(false);
         allthelights();
         highscore++;
-        scorebox.setText(getString(R.string.current_score) + (highscore-1));
+        scorebox.setText(getString(R.string.current_score) +": "+ (highscore-1));
     }
 
     public void gameover(){
 
         if (!tutorialmode){
             SharedPreferences.Editor editor = spscore.edit();
-            if (!spscore.contains(getString(R.string.best_score))) {
-                editor.putInt(getString(R.string.best_score), (highscore - 1));
+            if (!spscore.contains("bestScore")) {
+                Toast.makeText(getApplicationContext(), "score updated: " + (highscore-1), Toast.LENGTH_SHORT).show();
+                editor.putInt("bestScore", (highscore - 1));
             }
             else if(spscore.getInt("bestScore",-1) < highscore-1){
-                editor.putInt(getString(R.string.best_score), (highscore - 1));
+                editor.putInt("bestScore", (highscore - 1));
             }
             editor.commit();
 
@@ -330,7 +330,6 @@ public class GameActivity extends AppCompatActivity{
                 color.setEnabled(true);
             }
         }, 350);
-
     }
 
     private void playBtnSound(String fileName){

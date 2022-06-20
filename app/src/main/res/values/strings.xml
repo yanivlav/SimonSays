@@ -1,20 +1,17 @@
 <resources>
-    <string name="app_name">SimonSays</string>
+    <string name="app_name">₱₴Ɏ₵ⱧØ ₴ł₥Ø₦</string>
     <string name="start">start</string>
-
 
     <string-array name="list_entries">
         <item>Easy</item>
         <item>Intermediate</item>
         <item>Hurd</item>
-        <item>Expert</item>
     </string-array>
 
     <string-array name="list_values">
         <item>2</item>
         <item>3</item>
         <item>4</item>
-<!--        <item>5</item>-->
     </string-array>
 
     <string-array name="robot_sound_effects">
@@ -57,7 +54,7 @@
     </string-array>
 
     <string name="game_name" translatable="false">₱₴Ɏ₵ⱧØ ₴ł₥Ø₦</string>
-    <string name="game_name_preview">TᖇY TO ᗰᗩIᑎTᗩIᑎ ᔕᗩᑎIT</string>
+    <string name="game_name_preview">₮ⱤɎ ₮Ø ₥₳ł₦₮₳ł₦ ₴₳₦Ɇ</string>
     <string name="play_btn">ⱠɆ₮ ₮ⱧɆ ₲₳₥Ɇ ฿Ɇ₲ł₦</string>
     <string name="collection_btn">₥Ɏ ₵ØⱠⱠɆ₵₮łØ₦</string>
     <string name="conductor_btn">₵Ø₦ĐɄ₵₮ØⱤ Ø₣ ₮ⱧɆ ØⱤ₵ⱧɆ₴₮Ɽ₳</string>
@@ -67,20 +64,21 @@
     <string name="save_btn">Save</string>
     <string name="settings">Settings</string>
     <string name="share">₴Ⱨ₳ⱤɆ ₮ⱧɆ ₥₳Đ₦Ɇ₴₴</string>
-    <string name="instructions_btn">instructions</string>
+    <string name="instructions_btn">ł₦₴₮ⱤɄ₵₮łØ₦₴</string>
     <string name="tutorial">Tutorial</string>
     <string name="ok_btn">ok</string>
     <string name="board_ape_yacht_club_collection">Board ape yacht club collection</string>
     <string name="best_score_so_far_is">Best score so far is:</string>
-    <string name="score_target_is_20">score target is 20</string>
-    <string name="score_target_is_40">score target is 40</string>
+    <string name="score_target_is_1">score target is 1</string>
+    <string name="score_target_is_3">score target is 3</string>
+    <string name="score_target_is_7">score target is 7</string>
+    <string name="score_target_is_12">score target is 12</string>
+    <string name="score_target_is_15">score target is 15</string>
+    <string name="score_target_is_18">score target is 18</string>
+    <string name="score_target_is_25">score target is 25</string>
+    <string name="score_target_is_43">score target is 43</string>
+    <string name="score_target_is_50">score target is 50</string>
     <string name="score_target_is_60">score target is 60</string>
-    <string name="score_target_is_80">score target is 80</string>
-    <string name="score_target_is_100">score target is 100</string>
-    <string name="score_target_is_150">score target is 150</string>
-    <string name="score_target_is_200">score target is 200</string>
-    <string name="score_target_is_250">score target is 250</string>
-    <string name="score_target_is_300">score target is 300</string>
     <string name="psychosimon_is_a_simple_memory_game">PsychoSimon is a simple memory game!</string>
     <string name="listen_to_what_simon_says_repeat_the_sequence_of_the_lights_in_the_same_order_as_simon">Listen to what Simon says. Repeat the sequence of the lights in the same order as Simon.</string>
     <string name="simon_continues_to_add_a_step_with_each_new_level_you_reach_so_don_t_forget_the_sequence">Simon continues to add a step with each new level you reach so don\'t forget the sequence.</string>

@@ -47,11 +47,10 @@
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:src="@drawable/question"/>
-        <TextView
-                android:id="@+id/level1TV"
+        <TextView android:id="@+id/level1TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_20"
+                android:text="@string/score_target_is_1"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -68,15 +67,15 @@
                 android:scaleType="fitCenter"
                 android:layout_gravity="center"
                 android:src="@drawable/question"/>
-        <TextView android:id="@+id/level2TV"
+        <TextView
+                android:id="@+id/level2TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_40"
+                android:text="@string/score_target_is_3"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
-
 
         <ImageView
                 android:id="@+id/monky_level_3"
@@ -92,11 +91,12 @@
         <TextView android:id="@+id/level3TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_60"
+                android:text="@string/score_target_is_7"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
+
 
         <ImageView
                 android:id="@+id/monky_level_4"
@@ -112,11 +112,12 @@
         <TextView android:id="@+id/level4TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_80"
+                android:text="@string/score_target_is_12"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
+
 
         <ImageView
                 android:id="@+id/monky_level_5"
@@ -132,7 +133,7 @@
         <TextView android:id="@+id/level5TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_80"
+                android:text="@string/score_target_is_15"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -153,7 +154,7 @@
         <TextView android:id="@+id/level6TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_100"
+                android:text="@string/score_target_is_18"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -173,7 +174,7 @@
         <TextView android:id="@+id/level7TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_150"
+                android:text="@string/score_target_is_25"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -193,7 +194,7 @@
         <TextView android:id="@+id/level8TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_200"
+                android:text="@string/score_target_is_43"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -213,7 +214,7 @@
         <TextView android:id="@+id/level9TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_250"
+                android:text="@string/score_target_is_50"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"
@@ -233,7 +234,7 @@
         <TextView android:id="@+id/level10TV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/score_target_is_300"
+                android:text="@string/score_target_is_60"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/white"

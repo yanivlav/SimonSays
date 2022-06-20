@@ -45,59 +45,41 @@ public class ConductorActivity extends AppCompatActivity {
         blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userBlueBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                }
-                else
-                    playBtnSound(userBlueBtnSE);
-                buttonAnimation(blueIV);
+                lightupblue();
 
             }
         });
         redIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userRedBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                }
-                else
-                    playBtnSound(userRedBtnSE);
-                buttonAnimation(redIV);
+                lightupred();
             }
         });
         yellowIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userYellowBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                }
-                else
-                    playBtnSound(userYellowBtnSE);
-                buttonAnimation(yellowIV);
+                lightupyellow();
             }
         });
         greenIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (userGreenBtnSE.isEmpty()) {
-                    playBtnSound("boy_says_volcano");
-                }
-                else
-                    playBtnSound(userGreenBtnSE);
-                buttonAnimation(greenIV);
+                lightupgreen();
             }
         });
     }
 
-    private void buttonAnimation(ImageView color){
+    private void buttonAnimation(ImageView color) {
         AnimationDrawable animationDrawable = (AnimationDrawable) color.getDrawable();
         animationDrawable.start();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 animationDrawable.stop();
+                animationDrawable.setVisible(true,true);
+                color.setEnabled(true);
             }
-        }, 1000);
+        }, 350);
     }
 
     private void playBtnSound(String fileName){

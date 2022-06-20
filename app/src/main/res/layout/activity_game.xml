@@ -37,17 +37,12 @@
             android:textColor="@color/white"/>
 
     <TextView
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/info"
             android:gravity="center"
-            android:textColor="@color/white"/>
-
-    <TextView
-            android:id="@+id/Scorebox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:textSize="50dp"
             android:textColor="@color/white"/>
 
 
@@ -56,7 +51,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="30dp">
 
         <ImageView
                 android:id="@+id/red_IV"
@@ -96,6 +91,14 @@
                 android:src="@drawable/yellow_btn_animation" />
 
     </LinearLayout>
+
+    <TextView
+            android:id="@+id/Scorebox"
+            android:textSize="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/white"/>
 
 
 
