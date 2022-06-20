@@ -33,7 +33,7 @@ public class ConductorActivity extends AppCompatActivity {
         userBlueBtnSE = sp.getString("blue_listPreference", "");
         userGreenBtnSE = sp.getString("green_listPreference", "");
         userYellowBtnSE = sp.getString("yellow_listPreference", "");
-//
+
         blueIV = findViewById(R.id.blue_IV);
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);

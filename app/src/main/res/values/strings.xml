@@ -19,8 +19,6 @@
 
     <string-array name="robot_sound_effects">
         <item>scifi_robot_speaking</item>
-        <item>scifi_artificial_intelligence_speaks</item>
-        <item>science_fiction_computer_voice</item>
         <item>scifi_robot_says_no</item>
         <item>robotic_voices</item>
         <item>robot_says_yes</item>
@@ -28,85 +26,34 @@
     </string-array>
 
     <string-array name="instrumental_sound_effects">
-        <item>trumpets_and_strings_off_beat</item>
-        <item>orchestral_violin_treble_note</item>
-        <item>orchestral_violin_jingle</item>
         <item>musical_flute_alert</item>
         <item>musical_alert_notification</item>
         <item>hand_tribal_drum</item>
-        <item>guitar_notification_alert</item>
-        <item>flute_mobile_phone_notification_alert</item>
-        <item>fail_drum_and_bells</item>
+        <item>flute_alert</item>
         <item>electric_guitar_distorte_slide</item>
-        <item>drum_bass_hit</item>
-        <item>cool_guitar_riff_</item>
     </string-array>
 
     <string-array name="hitech_sound_effects">
-        <item>technological_futuristic_hum</item>
         <item>tech_click</item>
         <item>synthetic_scifi_wobble</item>
-        <item>sci-synth_glitchy_rhythm</item>
         <item>spell_waves</item>
         <item>space_shot_whoosh</item>
         <item>small_electric_glitch</item>
-        <item>scifi_drill_alert</item>
         <item>scifi_click</item>
         <item>game_interface_sound</item>
         <item>futuristic_cinematic_sweep</item>
     </string-array>
 
-    <string-array name="hit_sound_effects">
-        <item>tribal_dry_drum</item>
-        <item>steam_powered_mech_suit_activate</item>
-        <item>soft_horror_hit_drum</item>
-        <item>metal_tool_falling</item>
-        <item>metal_bowl_hit</item>
-        <item>deep_dark_horror_drum</item>
-        <item>axe_hits_to_a_plate</item>
-        <item>alien_blast_in_the_earth</item>
-    </string-array>
-
     <string-array name="arcade_sound_effects">
         <item>retro_game_notification</item>
         <item>lightning_whip</item>
-        <item>funny_system_break_down</item>
         <item>funny_cartoon_fast_splat</item>
-        <item>fantasy_sword_slide</item>
+        <item>female_astonished_gasp</item>
         <item>electric_buzz_glitch</item>
-        <item>cartoon_fart_triple</item>
         <item>cartoon_fart_triple</item>
         <item>cartoon_fart_sound</item>
         <item>cartoon_fart_or_splat</item>
-        <item>arcade_retro_game_over</item>
-    </string-array>
-
-    <string-array name="animels_sound_effects">
-        <item>toy_whistler_bird_sound</item>
-        <item>sweet_kitty_meow</item>
-        <item>sick_man_sneeze</item>
-        <item>sheep_sounds</item>
-        <item>quick_insect_buzz</item>
-        <item>little_bird_calling_chirp</item>
-        <item>female_astonished_gasp</item>
-        <item>farm_pig_short_grunt</item>
-        <item>cow_dry_moo</item>
-        <item>cartoon_insect_long_buzz</item>
-        <item>cartoon_insect_complain</item>
-        <item>big_bee_hard_flying_sound</item>
-        <item>angry_cartoon_kitty_meow</item>
         <item>aggressive_beas_troar</item>
-    </string-array>
-
-    <string-array name="alian_sound_effects">
-        <item>nasty_criature_roar</item>
-    </string-array>
-
-    <string-array name="alarm_sound_effects">
-        <item>wrong_answer_bass_buzzer</item>
-        <item>scifi_robot</item>
-        <item>electric_fence_buzzing</item>
-        <item>alarm_tone</item>
     </string-array>
 
     <string name="game_name" translatable="false">₱₴Ɏ₵ⱧØ ₴ł₥Ø₦</string>
