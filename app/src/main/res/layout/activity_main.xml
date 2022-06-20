@@ -14,7 +14,7 @@
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="@string/game_name"
-            android:textColor="@color/red"
+            android:textColor="@color/white"
             android:textSize="50sp" />
 
     <TextView
@@ -49,11 +49,10 @@
 
     <com.sanojpunchihewa.glowbutton.GlowButton
             android:id="@+id/first_activity_button"
-
-            android:layout_width="350dp"
-            android:layout_centerInParent="true"
+            android:layout_width="380dp"
             android:layout_height="55dp"
             android:layout_below="@id/simon_title_mini"
+            android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="@color/teal_200"
             android:gravity="center"
@@ -65,7 +64,8 @@
 
     <com.sanojpunchihewa.glowbutton.GlowButton
             android:id="@+id/collection_activity_button"
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:layout_height="55dp"
             android:layout_below="@id/first_activity_button"
             android:layout_marginTop="10dp"
@@ -78,8 +78,9 @@
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/conductor_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/collection_activity_button"
             android:layout_marginTop="10dp"
@@ -93,8 +94,9 @@
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/share_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/instructions_button"
             android:layout_marginTop="10dp"
@@ -109,8 +111,9 @@
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/instructions_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/conductor_button"
             android:layout_marginTop="10dp"

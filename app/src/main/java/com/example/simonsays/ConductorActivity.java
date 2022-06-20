@@ -17,7 +17,7 @@ public class ConductorActivity extends AppCompatActivity {
 
     String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE;
     ImageView blueIV, redIV, greenIV, yellowIV;
-    Button okBtn;
+    Button backBtn;
 
 
     private MediaRecorder mRecorder;
@@ -40,7 +40,16 @@ public class ConductorActivity extends AppCompatActivity {
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
-        okBtn = findViewById(R.id.ok_btn);
+        backBtn = findViewById(R.id.ok_btn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+
 
         blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
