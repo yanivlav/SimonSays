@@ -1,5 +1,6 @@
 package com.example.simonsays;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Random;
 
@@ -146,6 +148,7 @@ public class GameActivity extends AppCompatActivity{
                 inputcount = 0;
                 firstdelay = true;
                 info.setText(R.string.your_turn);
+                info.setTextColor(ContextCompat.getColor(GameActivity.this, R.color.green));
                 redIV.setEnabled(true);
                 blueIV.setEnabled(true);
                 greenIV.setEnabled(true);
@@ -154,6 +157,7 @@ public class GameActivity extends AppCompatActivity{
         }.start();
     }
 
+    @SuppressLint("ResourceAsColor")
     public void levelup(){
         if (!tutorialmode){
             correctInput[currentlevel] = generator.nextInt(4) +1;
@@ -161,6 +165,8 @@ public class GameActivity extends AppCompatActivity{
         currentlevel++;
         count = 0;
         info.setText(R.string.simons_turn);
+        info.setTextColor(ContextCompat.getColor(this, R.color.red));
+
         redIV.setEnabled(false);
         blueIV.setEnabled(false);
         greenIV.setEnabled(false);
