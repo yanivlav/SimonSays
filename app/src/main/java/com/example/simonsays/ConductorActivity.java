@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ConductorActivity extends AppCompatActivity {
 
     String userRedBtnSE, userBlueBtnSE,userGreenBtnSE, userYellowBtnSE;
-    ImageView blueIV, redIV, greenIV, yellowIV, recStatus;
+    ImageView blueIV, redIV, greenIV, yellowIV;
+    Button okBtn;
 
 
     private MediaRecorder mRecorder;
@@ -38,6 +40,7 @@ public class ConductorActivity extends AppCompatActivity {
         redIV = findViewById(R.id.red_IV);
         yellowIV = findViewById(R.id.yellow_IV);
         greenIV = findViewById(R.id.green_IV);
+        okBtn = findViewById(R.id.ok_btn);
 
         blueIV.setOnClickListener(new View.OnClickListener() {
             @Override
