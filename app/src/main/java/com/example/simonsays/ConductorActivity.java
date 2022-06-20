@@ -102,4 +102,52 @@ public class ConductorActivity extends AppCompatActivity {
         mPlayer.start();
     }
 
+    class ImpRunn implements Runnable {
+        String userBtnSE;
+
+        public ImpRunn(String ColorSE){
+            userBtnSE=ColorSE;
+
+        }
+        @Override
+        public void run() {
+            if (userBtnSE.isEmpty())
+                playBtnSound("boy_says_volcano");
+            else
+                playBtnSound(userBtnSE);
+        }
+    }
+
+    public void lightupred(){
+        redIV.setEnabled(false);
+        ConductorActivity.ImpRunn impR = new ConductorActivity.ImpRunn(userRedBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(redIV);
+    }
+
+    public void lightupyellow(){
+        yellowIV.setEnabled(false);
+        ConductorActivity.ImpRunn impR = new ConductorActivity.ImpRunn(userYellowBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(yellowIV);
+    }
+
+    public void lightupgreen(){
+        greenIV.setEnabled(false);
+        ConductorActivity.ImpRunn impR = new ConductorActivity.ImpRunn(userGreenBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(greenIV);
+    }
+
+    public void lightupblue(){
+        blueIV.setEnabled(false);
+        ConductorActivity.ImpRunn impR = new ConductorActivity.ImpRunn(userBlueBtnSE);
+        Thread th=new Thread(impR);
+        th.start();
+        buttonAnimation(blueIV);
+    }
+
 }
