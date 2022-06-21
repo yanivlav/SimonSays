@@ -57,16 +57,16 @@ public class CollectionActivity extends AppCompatActivity {
         bestScoreET.setText(bestScore+"");
 //
 
-        if (bestScore >  1) monky1.setImageResource(R.drawable.monky_level_1);
-        if (bestScore >  3) monky2.setImageResource(R.drawable.monky_level_2);
-        if (bestScore >  7) monky3.setImageResource(R.drawable.monky_level_3);
-        if (bestScore >  12) monky4.setImageResource(R.drawable.monky_level_4);
-        if (bestScore >  15) monky5.setImageResource(R.drawable.monky_level_5);
-        if (bestScore >  18) monky6.setImageResource(R.drawable.monky_level_6);
-        if (bestScore >  25) monky7.setImageResource(R.drawable.monky_level_7);
-        if (bestScore >  43) monky8.setImageResource(R.drawable.monky_level_8);
-        if (bestScore >  50) monky9.setImageResource(R.drawable.monky_level_9);
-        if (bestScore >  60) monky10.setImageResource(R.drawable.monky_level_10);
+        if (bestScore >=  1) monky1.setImageResource(R.drawable.monky_level_1);
+        if (bestScore >=  3) monky2.setImageResource(R.drawable.monky_level_2);
+        if (bestScore >=  7) monky3.setImageResource(R.drawable.monky_level_3);
+        if (bestScore >=  12) monky4.setImageResource(R.drawable.monky_level_4);
+        if (bestScore >=  15) monky5.setImageResource(R.drawable.monky_level_5);
+        if (bestScore >=  18) monky6.setImageResource(R.drawable.monky_level_6);
+        if (bestScore >=  25) monky7.setImageResource(R.drawable.monky_level_7);
+        if (bestScore >=  43) monky8.setImageResource(R.drawable.monky_level_8);
+        if (bestScore >=  50) monky9.setImageResource(R.drawable.monky_level_9);
+        if (bestScore >=  60) monky10.setImageResource(R.drawable.monky_level_10);
 
     }
 }
