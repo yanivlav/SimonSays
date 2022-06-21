@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,9 +24,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
 
     ImageView imageView;
-    EditText lastscoreET;
     Button next_Activity_button, conductorBtn, collectionBtn, instructiobnBtn, share;
-    String userNickname, UserSoundchise, userDiff;
     public static final int SETTINGS_REQUEST = 1;
     public static final int INSTRUCTIONS_REQUEST = 1;
 
@@ -39,17 +36,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
 
         imageView = findViewById(R.id.home_page2);
-
-//        Intent intent = new Intent(getApplicationContext(), Second_activity.class);
-//        int score = getIntent().getIntExtra("game_score",-1);
-//        lastscoreET = findViewById(R.id.lastScoreET);
-//        Bundle extras = getIntent().getExtras();
-//        if(extras!=null)
-//            lastscoreET.setText(extras.getInt("last_score"));
-//        else
-//            lastscoreET.setText("0");
-
-
         instructiobnBtn = findViewById(R.id.instructions_button);
         instructiobnBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         Uri uri = null;
         try {
             imagefolder.mkdirs();
-            File file = new File(imagefolder, "homepage2.jpg");
+            File file = new File(imagefolder, "Go_check_PsychoSimon.jpg");
             FileOutputStream outputStream = new FileOutputStream(file);
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
             outputStream.flush();

@@ -178,19 +178,18 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void gameover(){
-
         if (!tutorialmode){
             SharedPreferences.Editor editor = spscore.edit();
             if (!spscore.contains("bestScore")) {
 //                Toast.makeText(getApplicationContext(), "score updated: " + (highscore-1), Toast.LENGTH_SHORT).show();
-//                editor.putInt("bestScore", (highscore - 1));
+                editor.putInt("bestScore", (highscore - 1));
             }
             else if(spscore.getInt("bestScore",-1) < highscore-1){
                 editor.putInt("bestScore", (highscore - 1));
             }
             editor.commit();
 
-//            Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "your score was: " + (highscore-1), Toast.LENGTH_SHORT).show();
             lastScore = highscore -1;
         }
         tutorialmode = false;
@@ -199,7 +198,6 @@ public class GameActivity extends AppCompatActivity{
             correctInput[i] = 0;
         }
         currentlevel = l-1;
-        int lastScore = highscore;
         highscore = 0;
 
         redIV.setEnabled(false);
@@ -208,9 +206,8 @@ public class GameActivity extends AppCompatActivity{
         yellowIV.setEnabled(false);
 
         simonbutton.setEnabled(true);
-//        findViewById(R.id.start_btn).setEnabled(true); ----------------------------------- chack it out
         info.setText(R.string.hit_start_to_begin);
-        scorebox.setText(getString(R.string.current_score) +": "+ (lastScore-1));
+        scorebox.setText(getString(R.string.current_score) +": 0");
     }
 
     public void Simonsays(View view){
