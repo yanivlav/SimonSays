@@ -274,7 +274,7 @@ public class GameActivity extends AppCompatActivity{
                 if (4 == correctInput[inputcount]){
                     inputcount++;
                     if (inputcount == currentlevel){
-                        if (tutorialmode){
+                        if (tutorialmode){ //completed toturial succsefully
                             Toast.makeText(getApplicationContext(), R.string.completed_toturial,
                                     Toast.LENGTH_SHORT).show();
                             gameover();

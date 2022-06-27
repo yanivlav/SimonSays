@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.simonsays" >
+        xmlns:tools="http://schemas.android.com/tools"
+        package="com.example.simonsays" >
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,8 @@
             android:exported="false" />
         <activity
             android:name=".MyPrefFragment"
-            android:exported="false" />
+            android:exported="false"
+                tools:ignore="Instantiatable" />
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
