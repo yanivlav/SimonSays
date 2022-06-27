@@ -18,8 +18,8 @@ public class InstuctionsActivity extends AppCompatActivity {
         tutorialBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InstuctionsActivity.this, GameActivity2.class);
-                GameActivity2.tutorialmode = true;
+                Intent intent = new Intent(InstuctionsActivity.this, GameActivity.class);
+                GameActivity.tutorialmode = true;
                 startActivity(intent);
             }
         });

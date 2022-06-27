@@ -1,5 +1,6 @@
 package com.example.simonsays;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.Random;
 
@@ -61,6 +63,7 @@ public class GameActivity extends AppCompatActivity{
 //                Intent intent = new Intent(GameActivity.this,MainActivity.class);
 //                intent.putExtra("last_score", lastScore);
 //                startActivity(intent);
+                tutorialmode = false;
                 finish();
             }
         });
@@ -146,6 +149,7 @@ public class GameActivity extends AppCompatActivity{
                 inputcount = 0;
                 firstdelay = true;
                 info.setText(R.string.your_turn);
+                info.setTextColor(ContextCompat.getColor(GameActivity.this, R.color.green));
                 redIV.setEnabled(true);
                 blueIV.setEnabled(true);
                 greenIV.setEnabled(true);
@@ -154,6 +158,7 @@ public class GameActivity extends AppCompatActivity{
         }.start();
     }
 
+    @SuppressLint("ResourceAsColor")
     public void levelup(){
         if (!tutorialmode){
             correctInput[currentlevel] = generator.nextInt(4) +1;
@@ -161,6 +166,8 @@ public class GameActivity extends AppCompatActivity{
         currentlevel++;
         count = 0;
         info.setText(R.string.simons_turn);
+        info.setTextColor(ContextCompat.getColor(this, R.color.red));
+
         redIV.setEnabled(false);
         blueIV.setEnabled(false);
         greenIV.setEnabled(false);
@@ -171,11 +178,10 @@ public class GameActivity extends AppCompatActivity{
     }
 
     public void gameover(){
-
         if (!tutorialmode){
             SharedPreferences.Editor editor = spscore.edit();
             if (!spscore.contains("bestScore")) {
-                Toast.makeText(getApplicationContext(), "score updated: " + (highscore-1), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "score updated: " + (highscore-1), Toast.LENGTH_SHORT).show();
                 editor.putInt("bestScore", (highscore - 1));
             }
             else if(spscore.getInt("bestScore",-1) < highscore-1){
@@ -200,9 +206,8 @@ public class GameActivity extends AppCompatActivity{
         yellowIV.setEnabled(false);
 
         simonbutton.setEnabled(true);
-//        findViewById(R.id.start_btn).setEnabled(true); ----------------------------------- chack it out
         info.setText(R.string.hit_start_to_begin);
-        scorebox.setText(R.string.current_score);
+        scorebox.setText(getString(R.string.current_score) +": 0");
     }
 
     public void Simonsays(View view){

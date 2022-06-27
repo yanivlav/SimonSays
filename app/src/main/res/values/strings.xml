@@ -66,7 +66,7 @@
     <string name="share">₴Ⱨ₳ⱤɆ ₮ⱧɆ ₥₳Đ₦Ɇ₴₴</string>
     <string name="instructions_btn">ł₦₴₮ⱤɄ₵₮łØ₦₴</string>
     <string name="tutorial">Tutorial</string>
-    <string name="ok_btn">ok</string>
+    <string name="ok_btn">back</string>
     <string name="board_ape_yacht_club_collection">Board ape yacht club collection</string>
     <string name="best_score_so_far_is">Best score so far is:</string>
     <string name="score_target_is_1">score target is 1</string>
@@ -92,8 +92,8 @@
     <string name="nice_job">Nice Job!</string>
     <string name="completed_toturial">Nice! You\'ve completed the tutorial! Hit start to play.</string>
     <string name="Recall_what_Simon_did">Recall what Simon did. Try Again.</string>
-    <string name="your_turn">Your Turn</string>
-    <string name="simons_turn">Simon\'s Turn</string>
+    <string name="your_turn">ɎØɄⱤ ₮ɄⱤ₦̶</string>
+    <string name="simons_turn">₴ł₥Ø₦\'₴ ₮ɄⱤ₦</string>
     <string name="current_score">Current Score</string>
     <string name="best_score">Best Score:</string>
     <string name="hit_start_to_begin">Hit Start to Begin</string>

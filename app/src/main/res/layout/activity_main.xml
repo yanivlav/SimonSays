@@ -11,11 +11,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerInParent="true"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="@string/game_name"
             android:textColor="@color/white"
-            android:textSize="50dp" />
+            android:textSize="50sp" />
 
     <TextView
             android:id="@+id/simon_title_mini"
@@ -29,14 +29,14 @@
             android:layout_marginBottom="10dp"
             android:gravity="center"
             android:text="@string/game_name_preview"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
+            android:textColor="@color/red"
+            android:textSize="20sp" />
 
     <ImageView
             android:id="@+id/home_page2"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:srcCompat="@drawable/homepage2" />
+            app:srcCompat="@drawable/xilubi1" />
 
 
     <ImageView
@@ -49,22 +49,23 @@
 
     <com.sanojpunchihewa.glowbutton.GlowButton
             android:id="@+id/first_activity_button"
-
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
             android:layout_height="55dp"
             android:layout_below="@id/simon_title_mini"
-            android:layout_marginTop="10dp"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/teal_200"
             android:gravity="center"
             android:text="@string/play_btn"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
             android:id="@+id/collection_activity_button"
-            android:layout_width="match_parent"
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:layout_height="55dp"
             android:layout_below="@id/first_activity_button"
             android:layout_marginTop="10dp"
@@ -72,13 +73,14 @@
             android:gravity="center"
             android:text="@string/collection_btn"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/conductor_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/collection_activity_button"
             android:layout_marginTop="10dp"
@@ -87,13 +89,14 @@
             android:gravity="center"
             android:text="@string/conductor_btn"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/share_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/instructions_button"
             android:layout_marginTop="10dp"
@@ -103,13 +106,14 @@
             android:padding="15dp"
             android:text="@string/share"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
     <com.sanojpunchihewa.glowbutton.GlowButton
+            android:layout_width="380dp"
+            android:layout_centerInParent="true"
             android:id="@+id/instructions_button"
-            android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_below="@id/conductor_button"
             android:layout_marginTop="10dp"
@@ -119,7 +123,7 @@
             android:padding="15dp"
             android:text="@string/instructions_btn"
             android:textColor="@color/white"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:pressedGlowSize="20dp" />
 
