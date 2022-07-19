@@ -3,4 +3,4 @@
 ## ℹ️ Overview
 
 SimonSays game for android.
-![image](https://user-images.githubusercontent.com/22189126/179817508-88329bd9-3e86-4b40-af42-89f00ce956e7.png)
+![image](https://user-images.githubusercontent.com/22189126/179821896-d2708e6e-0f3f-42c6-993a-cbaad34f9c75.png)
